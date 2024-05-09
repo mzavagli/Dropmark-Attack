@@ -1,0 +1,20 @@
+# shadow build dir
+build
+# area for local temp files
+/local
+/install
+# ide-specific settings
+.vscode
+cscope.*
+# ctags index
+/tags
+/src/tags
+# other temp files
+*.swp
+target
+__pycache__
+# don't track the Cargo lock files of libraries
+/src/lib/logger/rust_bindings/Cargo.lock
+/src/lib/gml-parser/Cargo.lock
+# local selection of rust toolchain
+/rust-toolchain.toml

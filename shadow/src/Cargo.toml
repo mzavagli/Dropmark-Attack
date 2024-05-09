@@ -1,0 +1,51 @@
+[workspace]
+# We need version 2 of the resolver to avoid features enabled in build dependencies
+# causing that feature to also be enabled outside of build dependencies. In particular
+# we need this to avoid rustix's `std` feature from being enabled in the shim and in
+# tests via cbindgen via build dependencies.
+# https://github.com/bytecodealliance/rustix/issues/780
+# https://doc.rust-lang.org/cargo/reference/resolver.html#feature-resolver-version-2
+resolver = "2"
+
+members = [
+    "main",
+    "test",
+    "lib/formatting-nostd",
+    "lib/gml-parser",
+    "lib/linux-api",
+    "lib/log-c2rust",
+    "lib/logger",
+    "lib/pod",
+    "lib/scheduler",
+    "lib/shadow-build-common",
+    "lib/shadow-build-info",
+    "lib/shadow-shim-helper-rs",
+    "lib/shmem",
+    "lib/shim",
+    "lib/std-util",
+    "lib/syscall-logger",
+    "lib/tcp",
+    "lib/tsc",
+    "lib/vasi",
+    "lib/vasi-macro",
+    "lib/vasi-sync",
+]
+
+[profile.dev]
+# Without this, the shim requires a relatively large stack, especially during
+# initialization.  Rust makes it difficult to avoid putting objects temporarily
+# on the stack, even if it'll ultimately live in heap or static memory, but
+# opt-level 1 is enough to optimize a lot of those away.
+# 
+# See https://stackoverflow.com/questions/25805174/creating-a-fixed-size-array-on-heap-in-rust/68122278#68122278
+#
+# In our test suite the main place we see failures without this is in the
+# `clone-shadow` test, but it could also affect golang or other environments
+# with "light" user-space threading.
+opt-level = 1
+
+[profile.dev.build-override]
+# Our build scripts are slow due to bindgen, cbindgen, and cc. Using optimizations for build scripts
+# significantly reduces the runtime of the build scripts, which is most impactful during incremental
+# builds.
+opt-level = 3

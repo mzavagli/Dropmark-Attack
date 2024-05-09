@@ -1,0 +1,76 @@
+--- EXIT1 ---
+Jan 01 00:25:51.270 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 75137064:23367 at time 946686351:270000001 with middle node: ?
+Jan 01 00:25:58.288 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 75137064:23368 at time 946686358:288000001 with middle node: ?
+Jan 01 00:27:31.630 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4097439637:17594 at time 946686451:630000001 with middle node: ?
+Jan 01 00:27:38.648 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4097439637:17595 at time 946686458:648000001 with middle node: ?
+Jan 01 00:27:43.362 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4134851003:6360 at time 946686463:362000001 with middle node: ?
+--- EXIT2 ---
+Jan 01 00:25:00.150 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4270366262:38902 at time 946686300:150000001 with middle node: ?
+Jan 01 00:25:08.164 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4270366262:38903 at time 946686308:164000001 with middle node: ?
+Jan 01 00:25:18.874 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3895303707:41632 at time 946686318:874000001 with middle node: ?
+Jan 01 00:25:38.234 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 2273990035:52143 at time 946686338:234000001 with middle node: ?
+Jan 01 00:26:34.766 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3158959083:48143 at time 946686394:766000001 with middle node: ?
+Jan 01 00:26:46.783 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3836165901:55249 at time 946686406:783000001 with middle node: ?
+Jan 01 00:26:50.801 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3836165901:55250 at time 946686410:801000001 with middle node: ?
+Jan 01 00:26:53.515 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3836165901:55251 at time 946686413:515000001 with middle node: ?
+Jan 01 00:26:58.130 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3936569107:47976 at time 946686418:130000001 with middle node: ?
+Jan 01 00:27:02.148 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3936569107:47977 at time 946686422:148000001 with middle node: ?
+Jan 01 00:27:09.862 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3589691783:28892 at time 946686429:862000001 with middle node: ?
+Jan 01 00:27:23.612 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 2846617184:8507 at time 946686443:612000001 with middle node: ?
+Jan 01 00:28:04.398 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4036407639:38210 at time 946686484:398000001 with middle node: ?
+Jan 01 00:28:10.416 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 4036407639:38211 at time 946686490:416000001 with middle node: ?
+--- EXIT3 ---
+--- EXIT4 ---
+Jan 01 00:25:28.892 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3211278482:45748 at time 946686328:892000001 with middle node: ?
+Jan 01 00:25:32.909 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3211278482:45749 at time 946686332:909000001 with middle node: ?
+Jan 01 00:25:35.619 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3211278482:45750 at time 946686335:619000001 with middle node: ?
+Jan 01 00:25:46.252 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3987731477:44112 at time 946686346:252000001 with middle node: ?
+Jan 01 00:26:08.998 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 2483999918:10298 at time 946686368:998000001 with middle node: ?
+Jan 01 00:26:13.016 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 2483999918:10299 at time 946686373:16000001 with middle node: ?
+Jan 01 00:26:23.730 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 2236577682:55431 at time 946686383:730000001 with middle node: ?
+Jan 01 00:26:27.748 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 1767446374:24141 at time 946686387:748000001 with middle node: ?
+Jan 01 00:27:13.880 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 353585321:1492 at time 946686433:880000001 with middle node: ?
+Jan 01 00:27:18.898 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 353585321:1493 at time 946686438:898000001 with middle node: ?
+Jan 01 00:27:55.380 [info] connection_exit_begin_conn(): DROPMARK: Sending signal for address : 11.0.0.6 on circ:stream 3851380772:27048 at time 946686475:380000001 with middle node: ?
+--- RELAY1 ---
+--- RELAY2 ---
+--- RELAY3 ---
+--- RELAY4 ---
+--- RELAY5 ---
+Jan 01 00:25:00.350 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.16
+Jan 01 00:25:08.364 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.16
+Jan 01 00:25:19.074 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.11
+Jan 01 00:25:29.897 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.17
+Jan 01 00:25:34.115 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.17
+Jan 01 00:25:36.825 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.17
+Jan 01 00:25:38.434 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 100.0.0.1
+Jan 01 00:25:46.452 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.16
+Jan 01 00:25:51.470 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.7
+Jan 01 00:25:58.488 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.7
+Jan 01 00:26:09.198 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.7
+Jan 01 00:26:13.216 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.7
+Jan 01 00:26:24.735 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.15
+Jan 01 00:26:27.948 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.8
+Jan 01 00:26:35.771 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.15
+Jan 01 00:26:47.788 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.11
+Jan 01 00:26:52.007 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.11
+Jan 01 00:26:53.715 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.11
+Jan 01 00:26:59.135 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.16
+Jan 01 00:27:03.354 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.16
+Jan 01 00:27:10.062 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.8
+Jan 01 00:27:14.885 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.8
+Jan 01 00:27:20.104 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.8
+Jan 01 00:27:24.617 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.10
+Jan 01 00:27:31.830 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 100.0.0.1
+Jan 01 00:27:38.848 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 100.0.0.1
+Jan 01 00:27:43.562 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 100.0.0.1
+Jan 01 00:27:55.580 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 100.0.0.1
+Jan 01 00:28:04.598 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.8
+Jan 01 00:28:10.616 [info] signal_decode_simple_watermark(): DROPMARK: Spotted watermark, predecessor: 11.0.0.19, successor: 11.0.0.8
+--- RELAY6 ---
+--- RELAY7 ---
+--- RELAY8 ---
+--- RELAY9 ---
+--- RELAY10 ---
+--- RELAY11 ---
+--- RELAY12 ---

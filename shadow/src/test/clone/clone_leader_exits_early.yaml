@@ -1,0 +1,11 @@
+general:
+  stop_time: 10
+network:
+  graph:
+    type: 1_gbit_switch
+hosts:
+  testnode:
+    network_node_id: 0
+    processes:
+    - path: ./test_clone_leader_exits_early
+      start_time: 1

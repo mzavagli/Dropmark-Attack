@@ -1,0 +1,45 @@
+general:
+  # stop after 10 simulated seconds
+  stop_time: 10s
+
+network:
+  graph:
+    # use a built-in network graph containing
+    # a single vertex with a bandwidth of 1 Gbit
+    type: 1_gbit_switch
+
+hosts:
+  host:
+    network_node_id: 0
+    processes:
+    - path: bash 
+      args:
+       - -c
+       - |
+         # Bail on errors
+         set -euo pipefail
+
+         # Fork some subprocesses.
+         # These don't `exec` though, because `echo`
+         # is a bash built-in.
+         echo "Hello 1" &
+         echo "Hello 2" &
+         echo "Hello 3" &
+         jobs
+         echo all started
+
+         # Wait for all subprocesses to finish.
+         wait
+         echo all children exited
+
+         # Fork a subprocess with IO redirection.
+         echo $(echo hello from pipeline?)
+
+         # `exec` a subprocess
+         seq 5
+
+         # `exec` subprocesses with IO redirection.
+         seq 5 | tac
+
+         echo done
+      start_time: 3s

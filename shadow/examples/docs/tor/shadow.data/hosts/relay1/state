@@ -1,0 +1,36 @@
+# Tor state file last generated on 2000-01-01 00:03:18 local time
+# Other times below are in UTC
+# You *do not* need to edit this file.
+
+BWHistoryDirReadEnds 2000-01-02 00:01:00
+BWHistoryDirReadInterval 86400
+BWHistoryDirReadMaxima 0
+BWHistoryDirReadValues 0
+BWHistoryDirWriteEnds 2000-01-02 00:01:00
+BWHistoryDirWriteInterval 86400
+BWHistoryDirWriteMaxima 0
+BWHistoryDirWriteValues 0
+BWHistoryIPv6ReadEnds 2000-01-02 00:01:00
+BWHistoryIPv6ReadInterval 86400
+BWHistoryIPv6ReadMaxima 0
+BWHistoryIPv6ReadValues 0
+BWHistoryIPv6WriteEnds 2000-01-02 00:01:00
+BWHistoryIPv6WriteInterval 86400
+BWHistoryIPv6WriteMaxima 0
+BWHistoryIPv6WriteValues 0
+BWHistoryReadEnds 2000-01-02 00:01:00
+BWHistoryReadInterval 86400
+BWHistoryReadMaxima 172032
+BWHistoryReadValues 2476032
+BWHistoryWriteEnds 2000-01-02 00:01:00
+BWHistoryWriteInterval 86400
+BWHistoryWriteMaxima 174080
+BWHistoryWriteValues 2535424
+Dormant 0
+Guard in=default rsa_id=7073525D6A7B97E4708CE8B712BAF21049A72168 nickname=relay4 sampled_on=1999-12-23T11:13:00 sampled_idx=0 sampled_by=0.4.8.1-alpha-dev listed=1 confirmed_on=1999-12-22T20:22:29 confirmed_idx=1 pb_circ_attempts=5.000000 pb_circ_successes=5.000000 pb_successful_circuits_closed=5.000000
+Guard in=default rsa_id=3BAEAC8E24C87B4E536484837B67966487A93214 nickname=relay3 sampled_on=1999-12-23T18:37:47 sampled_idx=1 sampled_by=0.4.8.1-alpha-dev listed=1 confirmed_on=1999-12-22T22:46:13 confirmed_idx=0
+Guard in=default rsa_id=FF197204099FA0E507FA46D41FED97D3337B4BAA nickname=relay2 sampled_on=1999-12-27T08:16:35 sampled_idx=2 sampled_by=0.4.8.1-alpha-dev listed=1
+LastRotatedOnionKey 2000-01-01 00:01:00
+LastWritten 2000-01-01 00:03:18
+MinutesSinceUserActivity 2
+TorVersion Tor 0.4.8.1-alpha-dev (git-3cb6a690be60fcda)

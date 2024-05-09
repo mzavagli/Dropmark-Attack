@@ -1,0 +1,68 @@
+network-status-version 3
+vote-status consensus
+consensus-method 33
+valid-after 2000-01-01 00:30:00
+fresh-until 2000-01-01 00:35:00
+valid-until 2000-01-01 00:45:00
+voting-delay 20 20
+client-versions 
+server-versions 
+known-flags Authority Exit Fast Guard HSDir NoEdConsensus Running Stable StaleDesc Sybil V2Dir Valid
+recommended-client-protocols Cons=2 Desc=2 DirCache=2 HSDir=2 HSIntro=4 HSRend=2 Link=4-5 Microdesc=2 Relay=2
+recommended-relay-protocols Cons=2 Desc=2 DirCache=2 HSDir=2 HSIntro=4 HSRend=2 Link=4-5 LinkAuth=3 Microdesc=2 Relay=2
+required-client-protocols Cons=2 Desc=2 Link=4 Microdesc=2 Relay=2
+required-relay-protocols Cons=2 Desc=2 DirCache=2 HSDir=2 HSIntro=4 HSRend=2 Link=4-5 LinkAuth=3 Microdesc=2 Relay=2
+params AuthDirMaxServersPerAddr=0 cc_alg=2
+dir-source 4uthority BA3FDA7CE3B41FBF9BB3615BE6ACD28D883E694B 100.0.0.1 100.0.0.1 9112 9111
+contact https://github.com/shadow/shadow-plugin-tor/issues
+vote-digest 54F4DD036B82B483AE1C7B6028E3F7421A67BED8
+r exit1 CpsbIH/ROm8Rf5XK+jWO7iI08Zo 0QMHgAqbU+rsrUregU6pRKFR7Gk 2000-01-01 00:03:32 11.0.0.2 9111 0
+s Exit Fast HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=61 Unmeasured=1
+p accept 1-65535
+r relay3 O66sjiTIe05TZISDe2eWZIepMhQ pwcK8nG1G5JNzPTRM41UdMmwtPU 2000-01-01 00:03:31 11.0.0.7 9111 0
+s Fast Guard HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=185 Unmeasured=1
+p reject 1-65535
+r relay1 P7C9eCfHYP5/ndgQ/LEDItY6tM8 nswv70xXc1Sq76SLtjVXqThPuE8 2000-01-01 00:03:31 11.0.0.5 9111 0
+s Fast Guard HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=172 Unmeasured=1
+p reject 1-65535
+r exit2 Trs4XICiyl1nHhbxxyL7+18XaJE jd4377W5vlGvoLJAPVe1zyAn524 2000-01-01 00:26:32 11.0.0.3 9111 0
+s Exit Fast HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=266 Unmeasured=1
+p accept 1-65535
+r relay4 cHNSXWp7l+RwjOi3ErryEEmnIWg x48rvi6eHJru+ftTfC3P75xES18 2000-01-01 00:03:32 11.0.0.8 9111 0
+s Fast Guard HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=106 Unmeasured=1
+p reject 1-65535
+r 4uthority pSyltWxk2GT2rkPlbymsvVcG3aE laO6OD8OwsZi/S7oxATTKL+Op4o 2000-01-01 00:03:35 100.0.0.1 9111 9112
+s Authority Fast HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=93 Unmeasured=1
+p reject 1-65535
+r relay2 /xlyBAmfoOUH+kbUH+2X0zN7S6o bS42jDD6vuL9NGx7T6sjy6AfHlQ 2000-01-01 00:03:31 11.0.0.6 9111 0
+s Fast Guard HSDir Running Stable V2Dir Valid
+v Tor 0.4.8.1-alpha-dev
+pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
+w Bandwidth=171 Unmeasured=1
+p reject 1-65535
+directory-footer
+bandwidth-weights Wbd=0 Wbe=0 Wbg=4259 Wbm=10000 Wdb=10000 Web=10000 Wed=10000 Wee=10000 Weg=10000 Wem=10000 Wgb=10000 Wgd=0 Wgg=5741 Wgm=5741 Wmb=10000 Wmd=0 Wme=0 Wmg=4259 Wmm=10000
+directory-signature BA3FDA7CE3B41FBF9BB3615BE6ACD28D883E694B B6B52D36DA47A014B5CF65A55EDC62C93523DCC3
+-----BEGIN SIGNATURE-----
+vvbQ3DR3wRH3TCgnyHIfuA0tg9UxKqX/KbnI2qC1NsjrJDpxuYED4c3Ys72JaaWt
+J4SAncdOnko2ThUF/5JPL10gJ+jQOkO0OIqBgD5pSUSPCdNyTuMcFiQXR6Ldd2Sj
+Yr4sIXNtcOFly/iN8B8Wc/Yh/rZ1BOdIuI/AlAB3fpA=
+-----END SIGNATURE-----

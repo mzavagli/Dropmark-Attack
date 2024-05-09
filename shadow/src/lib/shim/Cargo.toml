@@ -1,0 +1,48 @@
+[package]
+name = "shadow-shim"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[features]
+perf_timers = []
+
+[dependencies]
+formatting-nostd = { path = "../formatting-nostd" }
+libc = { version = "0.2", default-features = false }
+linux-api = { path = "../linux-api"}
+num_enum = { version = "0.7.1", default-features=false }
+shadow-shim-helper-rs = { path = "../shadow-shim-helper-rs" }
+shadow_shmem = { path = "../shmem" }
+shadow_tsc = { path = "../tsc" }
+logger = { path = "../logger" }
+log = { version = "0.4.20", default-features = false }
+log-c2rust = { path = "../log-c2rust" }
+rustix = { version = "0.38.28", default-features = false, features = ["process", "thread", "time", "mm"] }
+linux-raw-sys = { version = "0.6.3" }
+shadow-pod = { path = "../pod" }
+vasi-sync = { path = "../vasi-sync"}
+static_assertions = "1.1.0"
+va_list = { version = "0.1.4", default-features = false }
+
+[dev-dependencies]
+env_logger = "0.11.1"
+test-log = "0.2.14"
+
+[build-dependencies]
+bindgen = { version = "0.69.1" }
+cbindgen = { version = "0.26.0", default_features = false }
+cc = { version = "1.0", features = ["parallel"] }
+shadow-build-common = { path = "../shadow-build-common" }
+# Building the C code from this crate's build script requires
+# that these bindings have been generated.
+shadow-shim-helper-rs = { path = "../shadow-shim-helper-rs" }
+system-deps = "6.2"
+
+[package.metadata.system-deps]
+# Keep consistent with the minimum version number in /CMakeLists.txt
+glib = { name = "glib-2.0", version = "2.58" }

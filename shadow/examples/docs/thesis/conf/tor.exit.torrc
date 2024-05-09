@@ -1,0 +1,4 @@
+ExitPolicy "accept *:*"
+ActivateDropmarkInjection 1
+WatchAddress 11.0.0.6
+FakeDataCell 0

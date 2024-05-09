@@ -1,0 +1,412 @@
+general:
+  stop_time: 30 min
+  seed: 1
+  parallelism: 0
+  bootstrap_end_time: 0 sec
+  log_level: info
+  heartbeat_interval: 1 sec
+  data_directory: shadow.data
+  template_directory: shadow.data.template
+  progress: false
+  model_unblocked_syscall_latency: false
+network:
+  graph:
+    type: gml
+    inline: |
+      graph [
+        directed 0
+        node [
+          id 0
+          host_bandwidth_down "1 Gbit"
+          host_bandwidth_up "1 Gbit"
+        ]
+        edge [
+          source 0
+          target 0
+          latency "50 ms"
+          jitter "0 ms"
+          packet_loss 0.0
+        ]
+      ]
+  use_shortest_path: true
+experimental:
+  use_sched_fifo: false
+  use_syscall_counters: true
+  use_object_counters: true
+  use_preload_libc: true
+  use_preload_openssl_rng: true
+  use_preload_openssl_crypto: false
+  use_memory_manager: false
+  use_cpu_pinning: true
+  use_worker_spinning: true
+  runahead: 1 ms
+  use_dynamic_runahead: false
+  socket_send_buffer: 131072 B
+  socket_send_autotune: true
+  socket_recv_buffer: 174760 B
+  socket_recv_autotune: true
+  interface_qdisc: fifo
+  host_heartbeat_log_level: info
+  host_heartbeat_log_info:
+  - node
+  host_heartbeat_interval: 1 sec
+  strace_logging_mode: off
+  max_unapplied_cpu_latency: 1 μs
+  unblocked_syscall_latency: 1 μs
+  unblocked_vdso_latency: 10 ns
+  scheduler: thread-per-core
+  log_errors_to_tty: true
+  use_new_tcp: false
+hosts:
+  4uthority:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address 4uthority --Nickname 4uthority --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 1 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: 100.0.0.1
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  client:
+    network_node_id: 0
+    processes:
+    - path: tgen
+      args: ../../../conf/tgen.client.graphml.xml
+      environment:
+        OPENBLAS_NUM_THREADS: '1'
+      start_time: 600 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state:
+        exited: 0
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  exit1:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address exit1 --Nickname exit1 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  exit2:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address exit2 --Nickname exit2 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  exit3:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address exit3 --Nickname exit3 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  exit4:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address exit4 --Nickname exit4 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  fileserver:
+    network_node_id: 0
+    processes:
+    - path: tgen
+      args: ../../../conf/tgen.server.graphml.xml
+      environment:
+        OPENBLAS_NUM_THREADS: '1'
+      start_time: 1 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay1:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay1 --Nickname relay1 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay10:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay10 --Nickname relay10 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay11:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay11 --Nickname relay11 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay12:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay12 --Nickname relay12 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay2:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay2 --Nickname relay2 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay3:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay3 --Nickname relay3 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay4:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay4 --Nickname relay4 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay5:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay5 --Nickname relay5 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay6:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay6 --Nickname relay6 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay7:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay7 --Nickname relay7 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay8:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay8 --Nickname relay8 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  relay9:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address relay9 --Nickname relay9 --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 60 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B
+  torclient:
+    network_node_id: 0
+    processes:
+    - path: /usr/local/bin/tor
+      args: --Address torclient --Nickname torclient --defaults-torrc torrc-defaults -f torrc
+      environment: {}
+      start_time: 900 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state: running
+    - path: tgen
+      args: ../../../conf/tgen.torclient.graphml.xml
+      environment:
+        OPENBLAS_NUM_THREADS: '1'
+      start_time: 1500 sec
+      shutdown_time: null
+      shutdown_signal: SIGTERM
+      expected_final_state:
+        exited: 0
+    ip_addr: null
+    bandwidth_down: null
+    bandwidth_up: null
+    host_options:
+      log_level: null
+      pcap_enabled: false
+      pcap_capture_size: 65535 B

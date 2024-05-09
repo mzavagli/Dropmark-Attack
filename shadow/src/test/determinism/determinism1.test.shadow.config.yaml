@@ -1,0 +1,37 @@
+general:
+  stop_time: 5
+host_option_defaults:
+  pcap_enabled: true
+network:
+  graph:
+    type: gml
+    inline: |
+      graph [
+        directed 0
+        node [
+          id 0
+          host_bandwidth_down "81920 Kibit"
+          host_bandwidth_up "81920 Kibit"
+        ]
+        edge [
+          source 0
+          target 0
+          latency "50 ms"
+          packet_loss 0.0
+        ]
+      ]
+hosts:
+  testnode1: &host
+    network_node_id: 0
+    processes:
+    - path: ./test-determinism
+      start_time: 1
+  testnode2: *host
+  testnode3: *host
+  testnode4: *host
+  testnode5: *host
+  testnode6: *host
+  testnode7: *host
+  testnode8: *host
+  testnode9: *host
+  testnode10: *host

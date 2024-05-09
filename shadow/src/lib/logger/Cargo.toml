@@ -1,0 +1,22 @@
+[package]
+name = "logger"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+linux-api = { path = "../linux-api" }
+
+[build-dependencies]
+cc = { version = "1.0", features = ["parallel"] }
+bindgen = { version = "0.69.1" }
+# Needs to be a build-dependency as well for its generated header files
+# to be present, which our C build needs.
+linux-api = { path = "../linux-api" }
+shadow-build-common = { path = "../shadow-build-common" }
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["staticlib", "rlib"]
+

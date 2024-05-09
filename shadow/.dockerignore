@@ -1,0 +1,14 @@
+# .dockerignore doesn't treat a bare basename as unrooted. e.g. just `target` is
+# equivalent to `./target`; it won't match `./src/test/target`.
+#
+# This file is also used with rsync --exclude-from in 'ci/run.sh', but rsync
+# appears to accept a super-set of patterns recognized by dockerignore.
+**/.git
+**/build
+**/target
+# local selection of rust toolchain
+rust-toolchain.toml
+# TODO: rename this directory to just `build` or move it under the primary
+# build dir
+src/lib/linux-api/bindings-build
+

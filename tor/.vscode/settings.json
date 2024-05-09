@@ -1,0 +1,21 @@
+{
+    "cmake.sourceDirectory": "/home/mike/Documents/tor/src/ext/equix",
+    "files.associations": {
+        "dropmark_attack.h": "c",
+        "circuit_st.h": "c",
+        "config.h": "c",
+        "router.h": "c",
+        "nodelist.h": "c",
+        "authcert.h": "c",
+        "node_st.h": "c",
+        "event.h": "c",
+        "channeltls.h": "c",
+        "*.inc": "c",
+        "or.h": "c",
+        "channel.h": "c",
+        "or_connection_st.h": "c",
+        "or_circuit_st.h": "c",
+        "cmath": "c",
+        "complex": "c"
+    },
+}
