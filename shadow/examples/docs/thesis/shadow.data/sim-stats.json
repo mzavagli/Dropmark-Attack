@@ -52,7 +52,7 @@
     }
   },
   "syscalls": {
-    "write": 774117,
+    "write": 710087,
     "read": 180120,
     "epoll_wait": 89609,
     "getpid": 25235,
