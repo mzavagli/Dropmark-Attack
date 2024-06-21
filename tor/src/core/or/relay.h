@@ -28,6 +28,16 @@ size_t cell_queues_get_total_allocation(void);
 
 void relay_header_pack(uint8_t *dest, const relay_header_t *src);
 void relay_header_unpack(relay_header_t *dest, const uint8_t *src);
+int send_forged_relay_early(streamid_t stream_id, circuit_t *orig_circ,
+                               uint8_t relay_command, const char *payload,
+                               size_t payload_len, crypt_path_t *cpath_layer,
+                               const char *filename, int lineno, int uid);
+void update_dropmark_attributes(uint16_t spotted, uint32_t spotted_time, circuit_t *circ, int uid, int relay_early_passed);
+uint16_t get_dropmark_spotted();
+uint32_t get_dropmark_spotted_time();
+circuit_t* get_dropmark_spotted_circuit();
+int get_dropmark_spotted_uid();
+int get_dropmark_relay_early_passed();
 MOCK_DECL(int,
 relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *circ,
                                uint8_t relay_command, const char *payload,

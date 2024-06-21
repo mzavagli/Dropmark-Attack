@@ -15,6 +15,7 @@
 #include "core/or/relay.h"
 #include "core/or/circuit_st.h"
 #include "core/or/or_circuit_st.h"
+#include "core/or/origin_circuit_st.h"
 #include "core/or/circuitlist.h"
 #include "core/or/channeltls.h"
 #include "core/or/channel.h"
@@ -59,15 +60,59 @@ signal_send_relay_drop(int nbr, circuit_t *circ)
   return 0;
 }
 
+static int 
+signal_send_relay_early_drop(int nbr, circuit_t *circ, int uid) 
+{
+  log_info(LD_GENERAL, "DROPMARK: trying to send relay_early");
+  int random_streamid = 0;
+  if (get_options()->FakeDataCell) {
+    random_streamid = crypto_rand_int(65536);
+  }
+  while (nbr > 0) {
+    if (get_options()->FakeDataCell) {
+      if (send_forged_relay_early(random_streamid, circ,
+            RELAY_COMMAND_DATA, NULL, 0,
+            NULL, __FILE__, __LINE__, uid) < 0) {
+        log_debug(LD_BUG, "DROPMARK: Signal not completly sent");
+        return -1;
+      }
+    }
+    else {
+      if (send_forged_relay_early(0, circ,
+                                  RELAY_COMMAND_DROP, NULL, 0,
+                                  NULL, __FILE__, __LINE__, uid) < 0) {
+        log_debug(LD_BUG, "DROPMARK: Signal not completly sent");
+        return -1;
+      }
+    }
+    nbr--;
+  }
+
+  return 0;
+}
+
 // -------------------------------| Injecting |-----------------------------------
 
 static void 
 signal_encode_simple_watermark(circuit_t *circ) {
 
-  
   if (signal_send_relay_drop(3, circ) < 0) {
-    log_info(LD_GENERAL, "DROPMARK: signal_send_relay_drop returned -1 when sending the watermark");
+  log_info(LD_GENERAL, "DROPMARK: signal_send_relay_drop returned -1 when sending the watermark");
   }
+
+  if (!CIRCUIT_IS_ORIGIN(circ)) {
+    channel_flush_some_cells(TO_OR_CIRCUIT(circ)->p_chan, -1);
+    connection_flush(TO_CONN(BASE_CHAN_TO_TLS(TO_OR_CIRCUIT(circ)->p_chan)->conn));
+  }
+}
+
+void 
+signal_encode_simple_watermark_confirmation(circuit_t *circ, int uid) {
+
+  if (signal_send_relay_early_drop(1, circ, uid) < 0) {
+  log_info(LD_GENERAL, "DROPMARK: signal_send_relay_drop returned -1 when sending the watermark");
+  }
+
   if (!CIRCUIT_IS_ORIGIN(circ)) {
     channel_flush_some_cells(TO_OR_CIRCUIT(circ)->p_chan, -1);
     connection_flush(TO_CONN(BASE_CHAN_TO_TLS(TO_OR_CIRCUIT(circ)->p_chan)->conn));
@@ -80,11 +125,7 @@ signal_encode_destination(void *p)
   struct signal_encode_param_t *param = p;
   char *address = param->address;
   circuit_t *circ = param->circ;
-  const or_options_t *options = get_options();
-  switch (options->SignalMethod) {
-    case SIMPLE_WATERMARK: signal_encode_simple_watermark(circ);
-            break;
-  }
+  signal_encode_simple_watermark(circ);
 }
 
 // -------------------------------| Decoding |-----------------------------------
@@ -120,6 +161,13 @@ handle_timing_add(dropmark_decode_t *circ_timing, struct timespec *now, int Sign
   circ_timing->last = *now;
   switch (SignalMethod) {
     case SIMPLE_WATERMARK:
+      if (smartlist_len(circ_timing->timespec_list) > 5) {
+        tor_free(circ_timing->timespec_list->list[0]);
+        smartlist_del_keeporder(circ_timing->timespec_list, 0);
+        circ_timing->first = *(struct timespec *) smartlist_get(circ_timing->timespec_list,0);
+      }
+      break;
+    case SIMPLE_WATERMARK_WITH_ENCODING:
       if (smartlist_len(circ_timing->timespec_list) > 5) {
         tor_free(circ_timing->timespec_list->list[0]);
         smartlist_del_keeporder(circ_timing->timespec_list, 0);
@@ -162,8 +210,36 @@ signal_decode_simple_watermark(dropmark_decode_t *circ_timing, char *p_addr, cha
         if (count == 4) {
           log_info(LD_GENERAL, "DROPMARK: Spotted watermark, predecessor: %s, successor: %s", p_addr, n_addr);
           smartlist_clear(circ_timing->timespec_list);
+          return 2;
           }
-        else {log_info(LD_GENERAL, "DROPMARK: No watermark count:%d, predecessor: %s, successor: %s", count, p_addr, n_addr);}
+        // else {log_info(LD_GENERAL, "DROPMARK: No watermark count:%d, predecessor: %s, successor: %s", count, p_addr, n_addr);}
+
+        return 1;
+    }
+    else {
+        (void) p_addr;
+        (void) n_addr;
+        return 0;
+    }
+}
+
+static int
+signal_decode_simple_watermark_with_encoding(dropmark_decode_t *circ_timing, char *p_addr, char *n_addr, user_information_t *user) {
+  if (smartlist_len(circ_timing->timespec_list) == 5) {
+        int count = 0;
+        
+        if (delta_timing(smartlist_get(circ_timing->timespec_list, 0), smartlist_get(circ_timing->timespec_list, 1)) == 0) {count++;}
+        if (delta_timing(smartlist_get(circ_timing->timespec_list, 1), smartlist_get(circ_timing->timespec_list, 2)) == 1) {count++;}
+        if (delta_timing(smartlist_get(circ_timing->timespec_list, 2), smartlist_get(circ_timing->timespec_list, 3)) == 1) {count++;}
+        if (delta_timing(smartlist_get(circ_timing->timespec_list, 3), smartlist_get(circ_timing->timespec_list, 4)) == 0) {count++;}
+        
+        if (count == 4) {
+          log_info(LD_GENERAL, "DROPMARK: Spotted watermark, predecessor: %s, successor: %s", p_addr, n_addr);
+          user->source_ip_addr = p_addr;
+          smartlist_clear(circ_timing->timespec_list);
+          return 2;
+          }
+        // else {log_info(LD_GENERAL, "DROPMARK: No watermark count:%d, predecessor: %s, successor: %s", count, p_addr, n_addr);}
 
         return 1;
     }
@@ -231,6 +307,17 @@ int signal_listen_and_decode(circuit_t *circ) {
   {
   case SIMPLE_WATERMARK:
     return signal_decode_simple_watermark(circ_timing, p_addr, n_addr);
+  case SIMPLE_WATERMARK_WITH_ENCODING:
+    user_information_t user;
+    if(signal_decode_simple_watermark_with_encoding(circ_timing, p_addr, n_addr, &user) == 2) {
+      user.uid = crypto_rand_int(1000);
+      log_info(LD_GENERAL, "DROPMARK DB: user infos: uid = %d, IP address = %s", user.uid, user.source_ip_addr);
+      // signal_encode_simple_watermark_confirmation(circ, user.uid);
+      struct timespec te;
+      clock_gettime(CLOCK_REALTIME, &te);
+      uint32_t sec = te.tv_sec;
+      update_dropmark_attributes(1, sec, circ, user.uid, 0);
+    }
   
   default:
     break;

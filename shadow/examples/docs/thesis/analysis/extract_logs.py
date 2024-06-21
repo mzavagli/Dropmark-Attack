@@ -1,4 +1,4 @@
-EXTRACT_EXIT = False
+EXTRACT_EXIT = True
 EXTRACT_RELAY = True
 
 number_of_relay = 12

@@ -484,6 +484,18 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
   int reason, direction;
   uint32_t orig_delivered_bw = 0;
   uint32_t orig_overhead_bw = 0;
+  /*
+  struct timespec te;
+  clock_gettime(CLOCK_REALTIME, &te);
+  long long ms = te.tv_sec*1000000000LL + te.tv_nsec;
+  // log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld", cell->command, circuit_get_by_circid_channel(cell->circ_id, chan)->n_circ_id, ms);
+  log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ 0 at time %lld", cell->command, ms);
+  
+  if (options->ActivateDropmarkInjection && (cell->command == CELL_RELAY_EARLY) && get_dropmark_spotted() && (te.tv_sec - get_dropmark_spotted_time() >= 1)) {
+    log_info(LD_GENERAL, "DROPMARK: ignore relay early cell");
+    update_dropmark_attributes(0, 0, NULL, 0, 1);
+    goto end;
+  }*/
 
   circ = circuit_get_by_circid_channel(cell->circ_id, chan);
 
@@ -570,7 +582,6 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
       --or_circ->remaining_relay_early_cells;
     }
   }
-
   if ((reason = circuit_receive_relay_cell(cell, circ, direction)) < 0) {
     log_fn(LOG_DEBUG,LD_PROTOCOL,"circuit_receive_relay_cell "
            "(%s) failed. Closing.",
@@ -625,6 +636,7 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
     }
     rep_hist_seen_new_rp_cell(is_v2);
   }
+  end:
 }
 
 /** Process a 'destroy' <b>cell</b> that just arrived from

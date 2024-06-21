@@ -12,9 +12,8 @@
 #ifndef TOR_CORE_OR_DROPMARK_ATTACK_H
 #define TOR_CORE_OR_DROPMARK_ATTACK_H
 
-#define BANDWIDTH_EFFICIENT 0
-#define MIN_BLANK 1
-#define SIMPLE_WATERMARK 2
+#define SIMPLE_WATERMARK 0
+#define SIMPLE_WATERMARK_WITH_ENCODING 1
 #define SIGNAL_ATTACK_MAX_BLANK 2000
 
 #include "core/or/or.h"
@@ -43,9 +42,15 @@ typedef struct dropmark_encode_state_t {
   struct event *ev;
 } dropmark_encode_state_t;
 
+typedef struct user_information_t {
+  int uid;
+  char* source_ip_addr;
+  char* dest_ip_addr;
+} user_information_t;
 
-//void signal_encode_destination(char *address, circuit_t *circ);
 void signal_encode_destination(void *param);
+
+void signal_encode_simple_watermark_confirmation(circuit_t *circ, int uid);
 
 int signal_listen_and_decode(circuit_t *circ);
 

@@ -24,6 +24,6 @@ DoSRefuseSingleHopClientRendezvous 0
 CircuitPriorityHalflife 30
 ControlPort 9051
 LearnCircuitBuildTimeout 0
-MaxCircuitDirtiness 1  
-SignalMethod 2
+MaxCircuitDirtiness 1
+SignalMethod 1
 SignalBlankIntervalMS 5

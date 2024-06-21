@@ -16,6 +16,18 @@
         "or_connection_st.h": "c",
         "or_circuit_st.h": "c",
         "cmath": "c",
-        "complex": "c"
+        "complex": "c",
+        "string": "c",
+        "sstream": "c",
+        "algorithm": "c",
+        "*.tcc": "c",
+        "deque": "c",
+        "functional": "c",
+        "iterator": "c",
+        "memory": "c",
+        "numeric": "c",
+        "queue": "c",
+        "utility": "c",
+        "vector": "c"
     },
 }

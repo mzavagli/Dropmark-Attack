@@ -107,6 +107,9 @@
 #include "core/or/dropmark_attack.h"
 #include "feature/relay/router.h"
 
+#include <unistd.h>
+#include <sys/time.h>
+
 static edge_connection_t *relay_lookup_conn(circuit_t *circ, cell_t *cell,
                                             cell_direction_t cell_direction,
                                             crypt_path_t *layer_hint);
@@ -144,6 +147,12 @@ uint64_t stats_n_relay_cells_delivered = 0;
  * reached (see append_cell_to_circuit_queue()) */
 uint64_t stats_n_circ_max_cell_reached = 0;
 uint64_t stats_n_circ_max_cell_outq_reached = 0;
+
+uint16_t dropmark_spotted = 0;
+uint32_t dropmark_spotted_time = 0;
+circuit_t* dropmark_spotted_circuit = NULL;
+int dropmark_spotted_uid = 0;
+int dropmark_relay_early_passed = 0;
 
 /**
  * Update channel usage state based on the type of relay cell and
@@ -375,13 +384,21 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
       node_t *node_me = node_get_mutable_by_id(me->cache_info.identity_digest);
       tor_assert(circ);
       if (node_me && node_me->is_possible_guard) {
-        log_info(LD_GENERAL, "DROPMARK: relay received for circ %d", circ->n_circ_id);
+        // log_info(LD_GENERAL, "DROPMARK: relay %d received for circ %d", cell->command, circ->n_circ_id);
         signal_listen_and_decode(circ);
       }
     }
   }
 
   append_cell_to_circuit_queue(circ, chan, cell, cell_direction, 0);
+
+  const or_options_t *options = get_options();
+  struct timespec te;
+  clock_gettime(CLOCK_REALTIME, &te);
+  if (options->ActivateDropmarkDecoding && dropmark_spotted && (te.tv_sec - dropmark_spotted_time >= 1)) {
+    signal_encode_simple_watermark_confirmation(circ, dropmark_spotted_uid);
+    update_dropmark_attributes(0, 0, NULL, 0, 0);
+  }
   return 0;
 }
 
@@ -630,6 +647,66 @@ pad_cell_payload(uint8_t *cell_payload, size_t data_len)
                            cell_payload + pad_offset, pad_len);
 }
 
+int 
+send_forged_relay_early(streamid_t stream_id, circuit_t *orig_circ,
+                               uint8_t relay_command, const char *payload,
+                               size_t payload_len, crypt_path_t *cpath_layer,
+                               const char *filename, int lineno, int uid) {
+  cell_t cell;
+  relay_header_t rh;
+  cell_direction_t cell_direction;
+  circuit_t *circ = orig_circ;
+
+  struct timespec te;
+  clock_gettime(CLOCK_REALTIME, &te);
+  // long long ms = te.tv_sec*1000000000LL + te.tv_nsec;
+  // log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld", CELL_RELAY_EARLY, circ->n_circ_id, ms);
+
+  usleep(uid);
+
+  /* XXXX NM Split this function into a separate versions per circuit type? */
+  tor_assert(circ);
+  tor_assert(payload_len <= RELAY_PAYLOAD_SIZE);
+
+  memset(&cell, 0, sizeof(cell_t));
+  // tor_assert(cpath_layer);
+  cell.circ_id = circ->n_circ_id;
+  cell_direction = CELL_DIRECTION_OUT;
+  cell.command = CELL_RELAY_EARLY;
+
+  memset(&rh, 0, sizeof(rh));
+  rh.command = relay_command;
+  rh.stream_id = stream_id;
+  rh.length = payload_len;
+  relay_header_pack(cell.payload, &rh);
+
+  if (payload_len)
+    memcpy(cell.payload+RELAY_HEADER_SIZE, payload, payload_len);
+
+  /* Add random padding to the cell if we can. */
+  pad_cell_payload(cell.payload, payload_len);
+
+  channel_t *chan = NULL;
+  crypt_path_t *layer_hint=NULL;
+  char recognized=0;
+  int reason;
+
+  tor_assert(&cell);
+  tor_assert(circ);
+  tor_assert(cell_direction == CELL_DIRECTION_OUT ||
+             cell_direction == CELL_DIRECTION_IN);
+  if (circ->marked_for_close)
+    return 0;
+
+  if (cell_direction == CELL_DIRECTION_OUT) {
+    cell.circ_id = circ->n_circ_id; /* switch it */
+    chan = circ->n_chan;
+  }
+
+  append_cell_to_circuit_queue(circ, chan, &cell, cell_direction, 0);
+  return 0;
+}
+
 /** Make a relay cell out of <b>relay_command</b> and <b>payload</b>, and send
  * it onto the open circuit <b>circ</b>. <b>stream_id</b> is the ID on
  * <b>circ</b> for the stream that's sending the relay cell, or 0 if it's a
@@ -699,7 +776,7 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
 
   log_debug(LD_OR,"delivering %d cell %s.", relay_command,
             cell_direction == CELL_DIRECTION_OUT ? "forward" : "backward");
-
+  
   /* Tell circpad we're sending a relay cell */
   circpad_deliver_sent_relay_cell_events(circ, relay_command);
 
@@ -716,6 +793,7 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
 
   if (cell_direction == CELL_DIRECTION_OUT) {
     origin_circuit_t *origin_circ = TO_ORIGIN_CIRCUIT(circ);
+    // log_info(LD_GENERAL, "DROPMARK: remaining relay_early %d for circ %d", (int)origin_circ->remaining_relay_early_cells, circ->n_circ_id);
     if (origin_circ->remaining_relay_early_cells > 0 &&
         (relay_command == RELAY_COMMAND_EXTEND ||
          relay_command == RELAY_COMMAND_EXTEND2 ||
@@ -730,6 +808,7 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
         circpad_machine_event_circ_has_no_relay_early(origin_circ);
       log_debug(LD_OR, "Sending a RELAY_EARLY cell; %d remaining.",
                 (int)origin_circ->remaining_relay_early_cells);
+      // log_info(LD_OR, "DROPMARK: Sending a RELAY_EARLY cell; %d remaining.", (int)origin_circ->remaining_relay_early_cells);
       /* Memorize the command that is sent as RELAY_EARLY cell; helps debug
        * task 878. */
       origin_circ->relay_early_commands[
@@ -749,6 +828,7 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
       log_warn(LD_BUG, "Uh-oh.  We're sending a RELAY_COMMAND_EXTEND cell, "
                "but we have run out of RELAY_EARLY cells on that circuit. "
                "Commands sent before: %s", commands);
+      log_info(LD_GENERAL, "DROPMARK: Uh-oh.  We're sending a RELAY_COMMAND_EXTEND cell, but we have run out of RELAY_EARLY cells on that circuit. Commands sent before: %s", commands);
       tor_free(commands);
       smartlist_free(commands_list);
     }
@@ -1722,7 +1802,7 @@ handle_relay_cell_command(cell_t *cell, circuit_t *circ,
       return connection_exit_begin_conn(cell, circ);
     case RELAY_COMMAND_DATA:
       ++stats_n_data_cells_received;
-
+      // log_info(LD_GENERAL, "DROPMARK: stremID = %d", rh->stream_id);
       if (rh->stream_id == 0) {
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL, "Relay data cell with zero "
                "stream_id. Dropping.");
@@ -3576,3 +3656,28 @@ circuit_queue_streams_are_blocked(circuit_t *circ)
     return circ->circuit_blocked_on_p_chan;
   }
 }
+
+void 
+update_dropmark_attributes(uint16_t spotted, uint32_t spotted_time, circuit_t *circ, int uid, int relay_early_passed) 
+{
+  dropmark_spotted = spotted;
+  dropmark_spotted_time = spotted_time;
+  dropmark_spotted_circuit = circ;
+  dropmark_spotted_uid = uid;
+  dropmark_relay_early_passed = relay_early_passed;
+}
+
+uint16_t
+get_dropmark_spotted() {return dropmark_spotted;}
+
+uint32_t
+get_dropmark_spotted_time() {return dropmark_spotted_time;}
+
+circuit_t*
+get_dropmark_spotted_circuit() {return dropmark_spotted_circuit;}
+
+int
+get_dropmark_spotted_uid() {return dropmark_spotted_uid;}
+
+int
+get_dropmark_relay_early_passed() {return dropmark_relay_early_passed;}
