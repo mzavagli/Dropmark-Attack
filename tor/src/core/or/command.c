@@ -484,7 +484,7 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
   int reason, direction;
   uint32_t orig_delivered_bw = 0;
   uint32_t orig_overhead_bw = 0;
-  /*
+  
   struct timespec te;
   clock_gettime(CLOCK_REALTIME, &te);
   long long ms = te.tv_sec*1000000000LL + te.tv_nsec;
@@ -495,7 +495,7 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
     log_info(LD_GENERAL, "DROPMARK: ignore relay early cell");
     update_dropmark_attributes(0, 0, NULL, 0, 1);
     goto end;
-  }*/
+  }
 
   circ = circuit_get_by_circid_channel(cell->circ_id, chan);
 
