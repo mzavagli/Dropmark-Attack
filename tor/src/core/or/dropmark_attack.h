@@ -48,6 +48,9 @@ typedef struct user_information_t {
   char* dest_ip_addr;
 } user_information_t;
 
+int get_state_conflux_switch_handling();
+void set_state_conflux_switch_handling(int state);
+
 void signal_encode_destination(void *param);
 
 void signal_encode_simple_watermark_confirmation(circuit_t *circ, int uid);

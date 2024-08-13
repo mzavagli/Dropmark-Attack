@@ -149,10 +149,12 @@ uint64_t stats_n_circ_max_cell_reached = 0;
 uint64_t stats_n_circ_max_cell_outq_reached = 0;
 
 uint16_t dropmark_spotted = 0;
-uint32_t dropmark_spotted_time = 0;
+long long dropmark_spotted_time = 0;
+circid_t dropmark_spotted_circuitid = 0;
 circuit_t* dropmark_spotted_circuit = NULL;
 int dropmark_spotted_uid = 0;
-int dropmark_relay_early_passed = 0;
+long long dropmark_previous_time = 0;
+char *dropmark_destination = '999.999.999.999';
 
 /**
  * Update channel usage state based on the type of relay cell and
@@ -391,13 +393,18 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
   }
 
   append_cell_to_circuit_queue(circ, chan, cell, cell_direction, 0);
-
   const or_options_t *options = get_options();
   struct timespec te;
   clock_gettime(CLOCK_REALTIME, &te);
-  if (options->ActivateDropmarkDecoding && dropmark_spotted && (te.tv_sec - dropmark_spotted_time >= 1)) {
+  long long ms = te.tv_sec*1000000LL + te.tv_nsec / 1000;
+  // log_info(LD_GENERAL, "DROPMARK: dropmark_spotted_time:%lld - current_time:%lld - delta:%lld - dropmark_spotted:%d", dropmark_spotted_time, ms, ms - dropmark_spotted_time, dropmark_spotted);
+  if (options->ActivateDropmarkDecoding && options->SignalMethod == 1 && dropmark_spotted && circ->n_circ_id == get_dropmark_spotted_circuit()->n_circ_id && (ms - dropmark_spotted_time > 1000000)) {
+    log_info(LD_GENERAL, "DROPMARK: sending relay_early has timed out");
+    update_dropmark_attributes(0, 0, 0, 0, NULL);
+  }
+  else if (options->ActivateDropmarkDecoding && options->SignalMethod == 1 && dropmark_spotted && circ->n_circ_id == get_dropmark_spotted_circuit()->n_circ_id && (ms - dropmark_spotted_time >= 405000)) {
     signal_encode_simple_watermark_confirmation(circ, dropmark_spotted_uid);
-    update_dropmark_attributes(0, 0, NULL, 0, 0);
+    update_dropmark_attributes(0, 0, 0, 0, NULL);
   }
   return 0;
 }
@@ -722,6 +729,9 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
                                size_t payload_len, crypt_path_t *cpath_layer,
                                const char *filename, int lineno))
 {
+
+  // log_info(LD_GENERAL, "DROPMARK: Sending one cell with strem_id %d with relay command %d", stream_id, relay_command);
+  if(get_state_conflux_switch_handling() == 1 && relay_command == RELAY_COMMAND_CONFLUX_SWITCH) {set_state_conflux_switch_handling(2);}
   cell_t cell;
   relay_header_t rh;
   cell_direction_t cell_direction;
@@ -3658,20 +3668,29 @@ circuit_queue_streams_are_blocked(circuit_t *circ)
 }
 
 void 
-update_dropmark_attributes(uint16_t spotted, uint32_t spotted_time, circuit_t *circ, int uid, int relay_early_passed) 
+update_dropmark_attributes(uint16_t spotted, long long spotted_time, circid_t circid, int uid, circuit_t *circ) 
 {
   dropmark_spotted = spotted;
   dropmark_spotted_time = spotted_time;
-  dropmark_spotted_circuit = circ;
+  dropmark_spotted_circuitid = circid;
   dropmark_spotted_uid = uid;
-  dropmark_relay_early_passed = relay_early_passed;
+  dropmark_spotted_circuit = circ;
 }
+
+void
+set_dropmark_previous_time(long long previous_time) {dropmark_previous_time = previous_time;}
+
+void
+set_dropmark_destination(char *address) {dropmark_destination = address;}
 
 uint16_t
 get_dropmark_spotted() {return dropmark_spotted;}
 
-uint32_t
+long long
 get_dropmark_spotted_time() {return dropmark_spotted_time;}
+
+circid_t
+get_dropmark_spotted_circuitid() {return dropmark_spotted_circuitid;}
 
 circuit_t*
 get_dropmark_spotted_circuit() {return dropmark_spotted_circuit;}
@@ -3679,5 +3698,8 @@ get_dropmark_spotted_circuit() {return dropmark_spotted_circuit;}
 int
 get_dropmark_spotted_uid() {return dropmark_spotted_uid;}
 
-int
-get_dropmark_relay_early_passed() {return dropmark_relay_early_passed;}
+long long
+get_dropmark_previous_time() {return dropmark_previous_time;}
+
+char*
+get_dropmark_destination() {return dropmark_destination;}

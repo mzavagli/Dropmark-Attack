@@ -26,4 +26,4 @@ ControlPort 9051
 LearnCircuitBuildTimeout 0
 MaxCircuitDirtiness 1
 SignalMethod 1
-SignalBlankIntervalMS 5
+SignalBlankIntervalMS 50

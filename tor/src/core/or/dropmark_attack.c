@@ -38,6 +38,11 @@ signal_send_relay_drop(int nbr, circuit_t *circ)
     random_streamid = crypto_rand_int(65536);
   }
   while (nbr > 0) {
+    if (get_state_conflux_switch_handling() == 2) {
+        set_state_conflux_switch_handling(1);
+        nbr--;
+        continue;
+      }
     if (get_options()->FakeDataCell) {
       if (relay_send_command_from_edge_(random_streamid, circ,
             RELAY_COMMAND_DATA, NULL, 0,
@@ -93,12 +98,31 @@ signal_send_relay_early_drop(int nbr, circuit_t *circ, int uid)
 
 // -------------------------------| Injecting |-----------------------------------
 
+int conflux_switch_state = 0;
+
+/*
+  0: default state
+  1: 
+  2: switch detected in the middle of dropmark sending
+*/
+void
+set_state_conflux_switch_handling(int state) {
+  conflux_switch_state = state;
+}
+
+int 
+get_state_conflux_switch_handling() {
+  return conflux_switch_state;
+}
+
+
 static void 
 signal_encode_simple_watermark(circuit_t *circ) {
-
+  set_state_conflux_switch_handling(1);
   if (signal_send_relay_drop(3, circ) < 0) {
   log_info(LD_GENERAL, "DROPMARK: signal_send_relay_drop returned -1 when sending the watermark");
   }
+  set_state_conflux_switch_handling(0);
 
   if (!CIRCUIT_IS_ORIGIN(circ)) {
     channel_flush_some_cells(TO_OR_CIRCUIT(circ)->p_chan, -1);
@@ -168,7 +192,9 @@ handle_timing_add(dropmark_decode_t *circ_timing, struct timespec *now, int Sign
       }
       break;
     case SIMPLE_WATERMARK_WITH_ENCODING:
+      // log_info(LD_GENERAL, "DROPMARK: handle_timing_add was called");
       if (smartlist_len(circ_timing->timespec_list) > 5) {
+        // log_info(LD_GENERAL, "DROPMARK: handle_timing_add was called (in if)");
         tor_free(circ_timing->timespec_list->list[0]);
         smartlist_del_keeporder(circ_timing->timespec_list, 0);
         circ_timing->first = *(struct timespec *) smartlist_get(circ_timing->timespec_list,0);
@@ -185,9 +211,9 @@ delta_timing(struct timespec *t1, struct timespec *t2)
   const or_options_t *options = get_options();
   double elapsed_ms = (t2->tv_sec-t1->tv_sec)*1000.0 +\
                       (t2->tv_nsec-t1->tv_nsec)*1E-6;
-  log_info(LD_GENERAL, "elapsed = %f", elapsed_ms);
+  // log_info(LD_GENERAL, "DROPMARK: elapsed = %f", elapsed_ms);
 
-  if (elapsed_ms >= (options->SignalBlankIntervalMS*0.95))
+  if (elapsed_ms >= (options->SignalBlankIntervalMS))
     return 0;
   else if (elapsed_ms >= 0)
     return 1;
@@ -234,7 +260,6 @@ signal_decode_simple_watermark_with_encoding(dropmark_decode_t *circ_timing, cha
         if (delta_timing(smartlist_get(circ_timing->timespec_list, 3), smartlist_get(circ_timing->timespec_list, 4)) == 0) {count++;}
         
         if (count == 4) {
-          log_info(LD_GENERAL, "DROPMARK: Spotted watermark, predecessor: %s, successor: %s", p_addr, n_addr);
           user->source_ip_addr = p_addr;
           smartlist_clear(circ_timing->timespec_list);
           return 2;
@@ -281,6 +306,7 @@ int signal_listen_and_decode(circuit_t *circ) {
     circ_timing->first = *now;
     smartlist_insert_keeporder(circ_timings, circ_timing,
         signal_compare_signal_decode_);
+    
     SMARTLIST_FOREACH(nodelist_get_list(), node_t *, node,
     {
       if (node->ri) {
@@ -310,13 +336,12 @@ int signal_listen_and_decode(circuit_t *circ) {
   case SIMPLE_WATERMARK_WITH_ENCODING:
     user_information_t user;
     if(signal_decode_simple_watermark_with_encoding(circ_timing, p_addr, n_addr, &user) == 2) {
-      user.uid = crypto_rand_int(1000);
-      log_info(LD_GENERAL, "DROPMARK DB: user infos: uid = %d, IP address = %s", user.uid, user.source_ip_addr);
-      // signal_encode_simple_watermark_confirmation(circ, user.uid);
+      user.uid = crypto_rand_int(999)+1;
       struct timespec te;
       clock_gettime(CLOCK_REALTIME, &te);
-      uint32_t sec = te.tv_sec;
-      update_dropmark_attributes(1, sec, circ, user.uid, 0);
+      long long ms = te.tv_sec*1000000LL + te.tv_nsec / 1000;
+      update_dropmark_attributes(1, ms, circid, user.uid, circ);
+      log_info(LD_GENERAL, "DROPMARK: Spotted watermark, predecessor:%s - uid:%d - source_address:%s - time:%lld", p_addr, user.uid, user.source_ip_addr, ms);
     }
   
   default:

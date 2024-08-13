@@ -4176,18 +4176,20 @@ connection_exit_begin_conn(cell_t *cell, circuit_t *circ)
       if (options->ActivateDropmarkInjection) {
         struct timespec *now = tor_malloc_zero(sizeof(struct timespec));
         clock_gettime(CLOCK_REALTIME, now);
+        long long ms = now->tv_sec*1000000LL + now->tv_nsec/1000;
         tor_addr_t addr;
         int r = tor_addr_parse(&addr, address);
         if (r != -1 && tor_addr_is_v4(&addr) && smartlist_contains_string(options->WatchAddressList, address)) {
-          log_info(LD_GENERAL, "DROPMARK: Sending signal for address : %s on circ:stream %u:%u at time %u%ld", address,
-              or_circ->p_circ_id, rh.stream_id, (uint32_t) now->tv_sec, now->tv_nsec);
+          log_info(LD_GENERAL, "DROPMARK: Sending signal for address : %s on circ:stream %d:%u at time %lld", address,
+              cell->circ_id, rh.stream_id, ms);
           signal_encode_param_t *param = tor_malloc_zero(sizeof(signal_encode_param_t));
           param->address = tor_strdup(address);
           param->circ = circ;
           signal_encode_destination(param);
           tor_free(param->address);
           tor_free(param);
-          update_dropmark_attributes(1, (uint32_t) now->tv_sec, circ, 0, 0);
+          set_dropmark_destination(address);
+          update_dropmark_attributes(1, ms, cell->circ_id, 0, circ);
         }
         tor_free(now);
       }

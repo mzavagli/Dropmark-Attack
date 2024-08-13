@@ -32,12 +32,16 @@ int send_forged_relay_early(streamid_t stream_id, circuit_t *orig_circ,
                                uint8_t relay_command, const char *payload,
                                size_t payload_len, crypt_path_t *cpath_layer,
                                const char *filename, int lineno, int uid);
-void update_dropmark_attributes(uint16_t spotted, uint32_t spotted_time, circuit_t *circ, int uid, int relay_early_passed);
+void update_dropmark_attributes(uint16_t spotted, long long spotted_time, circid_t circid, int uid, circuit_t *circ);
+void set_dropmark_previous_time(long long previous_time);
+void set_dropmark_destination(char *address);
 uint16_t get_dropmark_spotted();
-uint32_t get_dropmark_spotted_time();
+long long get_dropmark_spotted_time();
+circid_t get_dropmark_spotted_circuitid();
 circuit_t* get_dropmark_spotted_circuit();
 int get_dropmark_spotted_uid();
-int get_dropmark_relay_early_passed();
+char* get_dropmark_destination();
+long long get_dropmark_previous_time();
 MOCK_DECL(int,
 relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *circ,
                                uint8_t relay_command, const char *payload,
