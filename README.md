@@ -23,17 +23,13 @@ cd Dropmark-Attack
 Starting from the root directory, we install our custom version of Tor, based on [the official Tor repository](https://gitlab.torproject.org/tpo/core/tor/-/tree/main):
 ```bash
 cd tor/
-```
-```bash
+
 ./autogen.sh
-```
-```bash
+
 ./configure
-```
-```bash
+
 (sudo) make
-```
-```bash
+
 (sudo) make install
 ```
 ## Shadow
