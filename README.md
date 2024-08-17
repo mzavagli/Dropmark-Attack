@@ -3,12 +3,23 @@ This repository contains all the code requires to reproduce the results of our p
 
 **In-Lab Deanonymization Of Tor Clients - The Dropmark Attack**
 
+## Disclaimer
+
+**This project is intended solely for educational and research purposes**
+
+The code and techniques provided in this repository are designed to demonstrate and analyze the dropmark attack. **Under no circumstances should this code be used for malicious purposes or to target real-world systems or networks, mainly the live Tor network**.
+
+**By using this code, you agree to take full responsibility for your actions**. We, as the author of this repository, disclaim any liability for any misuse or damage that may arise from the use of this code. Users are strongly advised to test and analyze the code in a controlled, isolated environment, such as Shadow, and fully comply with all applicable laws and ethical guidelines.
+
+If you are unsure of the ethical or legal implications of using this code, please refrain from using it and seek appropriate guidance.
+
 ## Table of Contents
 - [Fetch Repository](#fetch-repository)
 - [Install Custom Tor Version](#install-custom-tor-version)
 - [Shadow](#shadow)
 - [Dropmark Attack: Phase 1](#dropmark-attack-phase-1)
 - [Dropmark Attack: Phase 2](#dropmark-attack-phase-2)
+- [Support Scripts](#support-scripts)
 
 ## Fetch Repository
 Clone this repository on your local machine:
@@ -44,7 +55,11 @@ Open *tor.common.torrc*, and put the configuration options:
 ```
 SignalMethod 0
 ```
-Return to the *thesis* directory:
+Open *tor.exit.torrc*, and make sure that the destination server IP address is correct:
+```
+WatchAddress x.x.x.x
+```
+Return to the *thesis/* directory:
 ```bash
 cd ../..
 ```
@@ -52,7 +67,7 @@ Run the simulation:
 ```bash
 ./run.sh
 ```
-Once the simulation ended successfully, go to the *analysis* directory:
+Once the simulation ended successfully, go to the *analysis/* directory:
 ```bash
 cd analysis
 ```
@@ -87,7 +102,11 @@ Open *tor.common.torrc*, and put the configuration options:
 ```
 SignalMethod 1
 ```
-Return to the *thesis* directory:
+Open *tor.exit.torrc*, and make sure that the destination server IP address is correct:
+```
+WatchAddress x.x.x.x
+```
+Return to the *thesis/* directory:
 ```bash
 cd ../..
 ```
@@ -95,7 +114,7 @@ Run the simulation:
 ```bash
 ./run.sh
 ```
-Once the simulation ended successfully, go to the *analysis* directory:
+Once the simulation ended successfully, go to the *analysis/* directory:
 ```bash
 cd analysis
 ```
@@ -110,4 +129,23 @@ cd ../shadow.data/hosts/torclient/
 See that 30 HTTP transfer were unsuccessful for both upload and download:
 ```bash
 grep 'stream-error' tgen.1003.stdout | wc -l
+```
+
+## Support Scripts
+Usage of our support scripts (in *analysis/* directory):
+- Extract logs, after the simulation is completed:
+```bash
+python3 extract_logs.py
+```
+- Minimal time elapsed:
+```bash
+python3 compute_mean_time.py
+```
+- Reproduction of the plots (figure 4.1):
+```bash
+python3 guard_node_cells.py
+```
+- Compute minimum ID length required:
+```bash
+python3 compute_minimum_ID_length.py
 ```

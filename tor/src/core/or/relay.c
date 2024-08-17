@@ -386,7 +386,6 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
       node_t *node_me = node_get_mutable_by_id(me->cache_info.identity_digest);
       tor_assert(circ);
       if (node_me && node_me->is_possible_guard) {
-        // log_info(LD_GENERAL, "DROPMARK: relay %d received for circ %d", cell->command, circ->n_circ_id);
         signal_listen_and_decode(circ);
       }
     }
@@ -397,9 +396,7 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
   struct timespec te;
   clock_gettime(CLOCK_REALTIME, &te);
   long long ms = te.tv_sec*1000000LL + te.tv_nsec / 1000;
-  // log_info(LD_GENERAL, "DROPMARK: dropmark_spotted_time:%lld - current_time:%lld - delta:%lld - dropmark_spotted:%d", dropmark_spotted_time, ms, ms - dropmark_spotted_time, dropmark_spotted);
   if (options->ActivateDropmarkDecoding && options->SignalMethod == 1 && dropmark_spotted && circ->n_circ_id == get_dropmark_spotted_circuit()->n_circ_id && (ms - dropmark_spotted_time > 1000000)) {
-    log_info(LD_GENERAL, "DROPMARK: sending relay_early has timed out");
     update_dropmark_attributes(0, 0, 0, 0, NULL);
   }
   else if (options->ActivateDropmarkDecoding && options->SignalMethod == 1 && dropmark_spotted && circ->n_circ_id == get_dropmark_spotted_circuit()->n_circ_id && (ms - dropmark_spotted_time >= 405000)) {
@@ -664,11 +661,6 @@ send_forged_relay_early(streamid_t stream_id, circuit_t *orig_circ,
   cell_direction_t cell_direction;
   circuit_t *circ = orig_circ;
 
-  struct timespec te;
-  clock_gettime(CLOCK_REALTIME, &te);
-  // long long ms = te.tv_sec*1000000000LL + te.tv_nsec;
-  // log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld", CELL_RELAY_EARLY, circ->n_circ_id, ms);
-
   usleep(uid);
 
   /* XXXX NM Split this function into a separate versions per circuit type? */
@@ -730,7 +722,6 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
                                const char *filename, int lineno))
 {
 
-  // log_info(LD_GENERAL, "DROPMARK: Sending one cell with strem_id %d with relay command %d", stream_id, relay_command);
   if(get_state_conflux_switch_handling() == 1 && relay_command == RELAY_COMMAND_CONFLUX_SWITCH) {set_state_conflux_switch_handling(2);}
   cell_t cell;
   relay_header_t rh;
@@ -803,7 +794,6 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
 
   if (cell_direction == CELL_DIRECTION_OUT) {
     origin_circuit_t *origin_circ = TO_ORIGIN_CIRCUIT(circ);
-    // log_info(LD_GENERAL, "DROPMARK: remaining relay_early %d for circ %d", (int)origin_circ->remaining_relay_early_cells, circ->n_circ_id);
     if (origin_circ->remaining_relay_early_cells > 0 &&
         (relay_command == RELAY_COMMAND_EXTEND ||
          relay_command == RELAY_COMMAND_EXTEND2 ||
@@ -838,7 +828,6 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *orig_circ,
       log_warn(LD_BUG, "Uh-oh.  We're sending a RELAY_COMMAND_EXTEND cell, "
                "but we have run out of RELAY_EARLY cells on that circuit. "
                "Commands sent before: %s", commands);
-      log_info(LD_GENERAL, "DROPMARK: Uh-oh.  We're sending a RELAY_COMMAND_EXTEND cell, but we have run out of RELAY_EARLY cells on that circuit. Commands sent before: %s", commands);
       tor_free(commands);
       smartlist_free(commands_list);
     }
@@ -1812,7 +1801,6 @@ handle_relay_cell_command(cell_t *cell, circuit_t *circ,
       return connection_exit_begin_conn(cell, circ);
     case RELAY_COMMAND_DATA:
       ++stats_n_data_cells_received;
-      // log_info(LD_GENERAL, "DROPMARK: stremID = %d", rh->stream_id);
       if (rh->stream_id == 0) {
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL, "Relay data cell with zero "
                "stream_id. Dropping.");

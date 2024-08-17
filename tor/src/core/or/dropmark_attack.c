@@ -68,7 +68,6 @@ signal_send_relay_drop(int nbr, circuit_t *circ)
 static int 
 signal_send_relay_early_drop(int nbr, circuit_t *circ, int uid) 
 {
-  log_info(LD_GENERAL, "DROPMARK: trying to send relay_early");
   int random_streamid = 0;
   if (get_options()->FakeDataCell) {
     random_streamid = crypto_rand_int(65536);
@@ -192,9 +191,7 @@ handle_timing_add(dropmark_decode_t *circ_timing, struct timespec *now, int Sign
       }
       break;
     case SIMPLE_WATERMARK_WITH_ENCODING:
-      // log_info(LD_GENERAL, "DROPMARK: handle_timing_add was called");
       if (smartlist_len(circ_timing->timespec_list) > 5) {
-        // log_info(LD_GENERAL, "DROPMARK: handle_timing_add was called (in if)");
         tor_free(circ_timing->timespec_list->list[0]);
         smartlist_del_keeporder(circ_timing->timespec_list, 0);
         circ_timing->first = *(struct timespec *) smartlist_get(circ_timing->timespec_list,0);
@@ -211,7 +208,6 @@ delta_timing(struct timespec *t1, struct timespec *t2)
   const or_options_t *options = get_options();
   double elapsed_ms = (t2->tv_sec-t1->tv_sec)*1000.0 +\
                       (t2->tv_nsec-t1->tv_nsec)*1E-6;
-  // log_info(LD_GENERAL, "DROPMARK: elapsed = %f", elapsed_ms);
 
   if (elapsed_ms >= (options->SignalBlankIntervalMS))
     return 0;

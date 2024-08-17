@@ -490,8 +490,7 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
   long long ms = te.tv_sec*1000000LL + te.tv_nsec / 1000;
   relay_header_t rh;
   relay_header_unpack(&rh, cell->payload);
-  // log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld", cell->command, circuit_get_by_circid_channel(cell->circ_id, chan)->n_circ_id, ms);
-
+  
   circ = circuit_get_by_circid_channel(cell->circ_id, chan);
 
   if (!circ) {
@@ -502,11 +501,8 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
     return;
   }
   
-  log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld", cell->command, cell->circ_id, ms);
-  // log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld --- cell relay header:%d", cell->command, cell->circ_id, ms, rh.length);
-  // log_info(LD_GENERAL, "DROPMARK: get_dropmark_spotted:%d - get_dropmark_spotted_time:%lld - current_time:%lld - delta:%lld", get_dropmark_spotted(), get_dropmark_spotted_time(), ms, ms - get_dropmark_spotted_time());
+  // log_info(LD_GENERAL, "DROPMARK: Received cell with command %d for circ %d at time %lld", cell->command, cell->circ_id, ms);
   if (options->SignalMethod == 1 && options->ActivateDropmarkInjection && cell->circ_id == get_dropmark_spotted_circuitid() && (cell->command == CELL_RELAY_EARLY) && get_dropmark_spotted() && (ms - get_dropmark_spotted_time() >= 605000) && (ms - get_dropmark_spotted_time() < 3000000)) {
-    // log_info(LD_GENERAL, "DROPMARK: Spotted_confirmation - current_time:%lld - previous_time:%lld - uid:%lld - destination:%s", ms, get_dropmark_previous_time(), (ms-get_dropmark_previous_time())%1000, get_dropmark_destination());
     log_info(LD_GENERAL, "DROPMARK: Spotted_confirmation - current_time:%lld - delta:%lld - uid:%lld - for_destination:%s", ms, (ms-get_dropmark_spotted_time()), (ms-get_dropmark_spotted_time())%1000, get_dropmark_destination());
     update_dropmark_attributes(0, 0, 0, 0, NULL);
     goto end;
