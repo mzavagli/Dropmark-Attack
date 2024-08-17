@@ -30,4 +30,5 @@
         "utility": "c",
         "vector": "c"
     },
+    "makefile.configureOnOpen": false,
 }
