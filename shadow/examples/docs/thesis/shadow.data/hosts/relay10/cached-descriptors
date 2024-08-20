@@ -900,7 +900,7 @@ i4MNtL21UbD0p9z46x8N6h4+e6b+KT9T5RVBZq07kQTCyfEHIL1YXlWQb6du2/wJ
 EgoJpXNZ2wJHbN5NMtcyjgZOvN5UQEqUW55l0hjhq0+Xa0WRx/PbZJL1/4yhh1w0
 T+w2xfABCnJCKKgSF+A8RfOvLYv/8K9DlCfzIRpvZ2Q=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay3 11.0.0.12 9111 0 0
 identity-ed25519
@@ -953,7 +953,7 @@ jpRSdufkGcBEPp2zCZgfABZHZ8B2SrdK3j+rMQ3yC1Pg/l82PB2T7LMNHROFIS5n
 BDMi/eiR+CtXXNG9jSzuw7nu2R8BhdusvLQK9zW0cDVG8SHMQxoaYHk946+H+XkN
 1HvbaFlaya81PKC9A3qxIYEhlAyov4xFlzDHojUyMk0=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router exit2 11.0.0.3 9111 0 0
 identity-ed25519
@@ -1006,7 +1006,7 @@ Ig8yfZWEsgahHKO+X3+C/nuas/nmNw8y8hz4QviQDHlPGBRaAcXUsZwfqUVZ5ig5
 FMSCGs/FDTbAiTFXeZoetbEI5sX2OrbYeJSn5mmcMbbGd61lZTR6INNETL/eQcdw
 1+6chgrVBnG9b/5yYBwEbpfeztCWYtY73YJxpXuRetU=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay7 11.0.0.16 9111 0 0
 identity-ed25519
@@ -1059,7 +1059,7 @@ Gcf/AUuHav+mR7XElaik5Wh/XhQ8vDVMTcTaVcT6vlz8sEU6m3jCfWD7hPN8ZT14
 dFGe9T6AbMEQoIFVFlR+XAL4zEy098DmZd5vpdaDU8Yb5Bs8mPr/DbDiE9TyW95S
 CqtN9UCY9ItXrg+xUdWBJtDDkZS9OpC9BaDWqvepMk8=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay11 11.0.0.9 9111 0 0
 identity-ed25519
@@ -1112,7 +1112,7 @@ X/1S0QiYmpmrCmXUW/SK25VbgCy0JSmHFThGXFU/vwbCVRYY0iy8NHgVvxjXKd6m
 jLc69CjlhbvY9OzAzTQt9CtC9LTAsm+OmNFKb0yu02bzLDV9cF7NGe8qn/WsHWMf
 cnCIudPvEewQfFmEWYv70oo1ekZ2BJSI9LkZqQAmS8E=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay10 11.0.0.8 9111 0 0
 identity-ed25519
@@ -1165,7 +1165,7 @@ uPUl67ItWF4hZRPvMBdQf3V8ps1NFM+3vL7tUM2gJHD5v70cojBaaVjm7LkGokrZ
 liE5KwtWDZWLjfxJEuGYbSzaqb6e3zPuiqH7CPh7hQtmn1RwuB6Xd6I6PDgrAP3s
 c4EPTufDH6yAEYiX+wLrPjIE9si/CemdFITH/8SDsJs=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay5 11.0.0.14 9111 0 0
 identity-ed25519
@@ -1180,7 +1180,7 @@ proto Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HS
 published 2000-01-01 00:03:31
 fingerprint CEB5 0B88 3726 79F1 51BF 7268 651F 2D4D 2F71 D512
 uptime 150
-bandwidth 1024000 1024000 81438
+bandwidth 1024000 1024000 81296
 extra-info-digest 29038B8E43F6609EAFA40D2C9CDA019B7D456AD6 mrqbmwP+DQN55CKtpoL+pIenvEBGj9GFVz7J3uVEyz8
 onion-key
 -----BEGIN RSA PUBLIC KEY-----
@@ -1211,14 +1211,14 @@ contact https://github.com/shadow/shadow-plugin-tor/issues
 ntor-onion-key v3/5rIseWpItv63qtMSAjRFvr2aPK+1uo1s4qOyZmXE
 reject *:*
 tunnelled-dir-server
-router-sig-ed25519 iQgcMZLUf9wy0RKkXPe+9hDoPonfKSFl/CdWpTa0mqWwDGZcnThXBC44QWPEXALpWA4PAH9O1hYIEvkAGJLMCg
+router-sig-ed25519 R8B8EqHfEJ7qbaQa/v75BwsyLGMe60QBcGsJbGciDW5NXpJM0CdLxYKNSR5LiCJkYQGGpQKMvkk81/IyE2+cCA
 router-signature
 -----BEGIN SIGNATURE-----
-vqAZp1F12bI9t+dp1x3iRCCUItiXERO1ktPfBpR+/XYdvj/sw+cqsovuNsWquWSG
-zd04NXgTbmxOoFrLPOyAIHPwESnA4/5Mo7DkJ4Ib6zl3UAci+cLA/+5p+mIhR/Yy
-bzuJBpMLqxL9PnjQ3Io9eW6s7dlrMOFNP2I6kpOykyI=
+qTPeH9blpdBEmFvTm6zcEYQgNnLbX2eWOerH/bxf/bH3CjakroQRiPpfT/Y6KW5J
+6RV26FlxrIOlQUIJrJ/kObI6UnYlB21a5+QOVPR8Hs0L6kXBq0PnjYumyhTlGO40
+jrDRudKQI6rRMFOV1OfA2YUjUGhCjBFc0oJ8f1AUekw=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay2 11.0.0.11 9111 0 0
 identity-ed25519
@@ -1233,7 +1233,7 @@ proto Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HS
 published 2000-01-01 00:03:31
 fingerprint FF19 7204 099F A0E5 07FA 46D4 1FED 97D3 337B 4BAA
 uptime 150
-bandwidth 1024000 1024000 92807
+bandwidth 1024000 1024000 93019
 extra-info-digest FA9D7C21838BEA4ECDAA51BCA355AED4912273F5 SJ9ywDK66po5vnVVc366aK9E8/87xVEksUkIo6p/e8s
 onion-key
 -----BEGIN RSA PUBLIC KEY-----
@@ -1264,14 +1264,14 @@ contact https://github.com/shadow/shadow-plugin-tor/issues
 ntor-onion-key BLE0tslPVRT15mf2NZ5dh2RX+HkyVxLNw93ofv1x0V4
 reject *:*
 tunnelled-dir-server
-router-sig-ed25519 f77lRUADIay+3871xj5gKVJTgmmmqoNBlmq/Gom9ajNPxlDksXA0UuAoVjpQvn3R4qlnIzy4o/rCXzJ4iQCQAw
+router-sig-ed25519 /poWrxs7pVXe0FfIqe1BHhp4CNCHqjjDVo7EJqUOZXhysIxwLpmD5UufX8a4GhLjsw4U/2UAHYC/ExG3mZX5BA
 router-signature
 -----BEGIN SIGNATURE-----
-FQwEYFUGS0O2cBuEiwJREd3bILjLdlOKPQH8cfEwSTwzGaL4zv3upFnWs1r+9Err
-k8IniBOhZ1YymKaLGB367WjNrw1UtfhqRbhgPPu1GKy4X5voR74ignOLxJDQ6A8o
-HvHUF3qhxZJLzXRqu6A4JyWeq0BPB6czNFRmWA9iwpY=
+J2U3xjdM1upO2K+jGGmgMEcgoTUkus+YxfBHZTo3VuI84YmIyfHeLXVJCitelwU5
+cHJjeDnBvCFWy1rFofFwfRWUOIYZRq2/iQosVEZjCJOMi5kKDh2jXwvwAOJ1BXTU
+1vrQYT5JMUbDqKuHGLqNRiL4UYG4t6hvpovZCPRoth0=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router exit4 11.0.0.5 9111 0 0
 identity-ed25519
@@ -1286,7 +1286,7 @@ proto Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HS
 published 2000-01-01 00:03:32
 fingerprint 0FB3 19D8 C46B 4D9D 089D 6F20 9E29 95B7 0896 AB22
 uptime 151
-bandwidth 1024000 1024000 54387
+bandwidth 1024000 1024000 54494
 extra-info-digest 6B45584789840A29793B6259CDFCB9686C6A881E sPpyhbh1Bb2STbp82ciOQDvwzQOtyPPog//psEEqNE8
 onion-key
 -----BEGIN RSA PUBLIC KEY-----
@@ -1317,14 +1317,14 @@ contact https://github.com/shadow/shadow-plugin-tor/issues
 ntor-onion-key 4YnA0TTSpDO69pVmvlVvvsNMC+8ljqrce4Za1wKAOkw
 accept *:*
 tunnelled-dir-server
-router-sig-ed25519 4h2WHa6LjbwzcyUH9fVGoeBXqAf2J2JqZFn5f2v4pZR+XpXHwDgZQdBp2+GFrPOulPL7bO0Hkh2r7vEB2+jpCg
+router-sig-ed25519 pGIpJ4U1EcnV74AuSPFQa9jPKa5Dv2/Dr5n6IrriHkB9MIZMXxWP79VHR+o2GpRwaK3Fu7+VYj//RyoowOuZCg
 router-signature
 -----BEGIN SIGNATURE-----
-O98NMnTgk6ByAmh27ogRomwUchnATjZ8Kk2SA8WxF4s444WPf3Fscx1xd0aliLWT
-w9RcOk7lMw5dvuJMmwOszUrZ4xa+kXgyuu51Yyma2mLxjamux6B6swp3xU3jgEhb
-heTOSkRMbLXPKz1L40jUw5igR016rSnqrrSFf3tXIkQ=
+CXE5xT3ro5QWVSqlYO5Vr/jljgKiKCXOSy1bR/dBxmXv9gWuRVPwCVFWpclqnYiH
+tKhMAzqAcSaPuXTnVP2ebiwgbSiOzCePU47zsQQ8etaKyB9TWTo01kRFK0sVDtFM
+C8gBDksfKULpjbli+YyJzBH46vqSMusy1whamctyXN4=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay6 11.0.0.15 9111 0 0
 identity-ed25519
@@ -1339,7 +1339,7 @@ proto Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HS
 published 2000-01-01 00:03:32
 fingerprint 3DF9 1E13 07ED 6C27 CBB2 B60A 1D73 116B E7A6 B0E7
 uptime 151
-bandwidth 1024000 1024000 13848
+bandwidth 1024000 1024000 13901
 extra-info-digest A3198D8C476CB8DC4E7CEB881BCAEDA2F94D70DB g+j9Lh92uGKmjdQ0soLbgvpbKGze4vOoHaRJ69jah9M
 onion-key
 -----BEGIN RSA PUBLIC KEY-----
@@ -1370,14 +1370,14 @@ contact https://github.com/shadow/shadow-plugin-tor/issues
 ntor-onion-key MMoWy8U1B1F0HlTDLdkcpeTN/9RpqRVNiXTMjjKv9Us
 reject *:*
 tunnelled-dir-server
-router-sig-ed25519 9XpFVqHf8FwXLWxKnTlWcrhUmm2smhRP2vX0FaSASzRo68C9K8yq00/a8GX3SW1DjRda+X0zYFVLqNg/YWwwDQ
+router-sig-ed25519 YTcgnpPO7cdrehFxGZ401OlSkeTlx6rEPLXAcH5n6lsNUjatQcPMH6j332SL30lKoQSsSr0oljkDl+AL8TZ5Cg
 router-signature
 -----BEGIN SIGNATURE-----
-BWjEHTonph3quS0SgszXfCxNe4je0y1kmxQO0ZASYhctBfidsSVVwdkLTGZMQo7m
-H1l7UUnf70BT73hOFMa7kTCEEmpUMzmuqdKanGRWJ0A6QzsOCsZwp3/s8uRpD3LI
-H5FE0dcfjbupIa8X31CC49d60Q3xffbyeqe9WMI1oY8=
+Mm9h6ZzhCXAkLfxrmT4Gp8gyb/FT20Es/F362Z2gW+fjouMiW8OfoasQMtQViRh7
+TQ/xrqlxhlGwVZM2WGV7CH+us/Xgk2Q50JJkyTKKLREKSAaI45NfpIpT8BfbH2hv
+KZBxqOAcbEaoXM1XkJSvxg9a/IiNb/bflBZxuos/67E=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay1 11.0.0.7 9111 0 0
 identity-ed25519
@@ -1430,7 +1430,7 @@ ct9d37/UaD2RDz3ryNVg6AMB1nz2/VLndRStVXPvyy8Gtk//9LoX+Jw1h2sGlcXQ
 lc0XryYPp76NRGD0BikHLy8hlPkipHr/J5OdREapn+kIt3ca2SSEIvAWNtFuXTHu
 UKhPVfug5X0QzForN+Wybvbhd6/oaP5CV2ZUEPJYST8=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay9 11.0.0.18 9111 0 0
 identity-ed25519
@@ -1483,7 +1483,7 @@ WWy2QR2NWU2FK7TNdUHTD6AffyGc3RVHy/kuytYF0x753XmsnvZjts/OcmDFCp/9
 WU1BvTA6WZ+ipgvZ3WgCph9m2+tvDj6AoXadsIbORsIZ6VIwhDMfYb1rXLks8Lfe
 ucP2WRc2ZG7ucZhe6kVNHb1cZGIT2TD+BEhxkVjWtXA=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay12 11.0.0.10 9111 0 0
 identity-ed25519
@@ -1536,7 +1536,7 @@ rvKhFQA4PLQsKfT0hvs/y8LMiW0Po2xa8/qizqgGvHF+cGHmLUz+HrourLRti/He
 d2zUkc0Bu7JeirnBH1Hxcy9/6OAe63rNf2qiqOCuraUylDZmILEYVRJwrziWkSbC
 FXQc1NFKxugc9oJRqf6dH0kMpGO5JW+k+dDvkiT5MpU=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router exit3 11.0.0.4 9111 0 0
 identity-ed25519
@@ -1551,7 +1551,7 @@ proto Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HS
 published 2000-01-01 00:03:32
 fingerprint AB41 566F 6C8A 1F9F 4776 788F 1F0E A952 E0D7 A080
 uptime 151
-bandwidth 1024000 1024000 40683
+bandwidth 1024000 1024000 40844
 extra-info-digest 092047613B09714803B78297EFED106266102798 EU4uxNOfKkdOxEj/qs1bc2/BWz03yjp0BMRHCa9KNlE
 onion-key
 -----BEGIN RSA PUBLIC KEY-----
@@ -1582,14 +1582,14 @@ contact https://github.com/shadow/shadow-plugin-tor/issues
 ntor-onion-key PPE4atGwliDgvfuzE8GKI8+4/ziWgrwX/poY11FTMyI
 accept *:*
 tunnelled-dir-server
-router-sig-ed25519 NHbZzJHIfPqHUfdSAU4viCy6Pn+IOKDpNyuDX0MZA+ajKyFK6guNitkpvNZ1ub4Fi00QVGGJChmig2qyrVmSDw
+router-sig-ed25519 0fgioHq4sQnG2+/1z4HxvJo9G8hVdBf6PLOsGaSf13USVm21QsE7hs8uyYasCovAOniEevuk0NnMn3QAd8TQDg
 router-signature
 -----BEGIN SIGNATURE-----
-TJaEOVAmTQj0dHgi9/yk26mmxfwCPGEw6pvEpr0OWngythWim27MnODZmQw3xYAD
-dqw6xXjjDqSO8wZbt/M+xHnFvc0JrMZrHzx14hSvX8XJ1bHwywJLiUfZaXdvJsG4
-ZAY/EC1tsjtoHDGIhKSQDB7wZAgkJgWlEw1nVLc27X0=
+PXzq0igC5p0fngBWQ5MjTLCe05uFbyySE0kMhJSUS/I1iiYVkYdAljPxaK3A/Oo8
+4EHJ5xEUN1U8ljaDVAk1qJiRRJ7FzOtD7DUJb30ff2HLaoRnqC59KxPuuKJZg34m
+q6lm2yoll9U13W20NV6YqNM+AS7HoyFsXMm0W7EBevQ=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router exit1 11.0.0.2 9111 0 0
 identity-ed25519
@@ -1642,7 +1642,7 @@ rqTFSbzrMx9yMUDRxQmYSNbDFi1cwin584FqqFaffaf+bWKucibz4OnBQKCE/jl9
 fYyFqUugO2AtFxYydZ67+Eg2s6MNG8MjYQNoBIhnzWPj3VwKObxyvCfFVURYenS5
 ZEoPSKu2re4Ba5Dfh/x4QJimhF5hWixxQhSDBwynCCM=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay4 11.0.0.13 9111 0 0
 identity-ed25519
@@ -1695,7 +1695,7 @@ ZpPI6x5Ey5+3D3m4hJYG4XTyva8Lx9PQvTMCOSemaEbJAn8Oe3TFbsWH4wfdW8jd
 xjXN0gLszOqn6ec82Ip4OwtgzVC8kCxjZ3iojh474/j3UuPHIcLQrTheuKQhZcpa
 70WTh8j+pASytcjRLZDlyzcFkaHxKwV27425ZTYha1k=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router relay8 11.0.0.17 9111 0 0
 identity-ed25519
@@ -1748,7 +1748,7 @@ RWVaJnB9IoCK7XDFWGR6EpBOOqRw0tjeXxsfOCsPad1OBLZm3S7t/W4t7yLUzTTk
 KeRynvqIM+Yw4BxjVqBdot+H6jDeK2RyveyqbPYrWR0jXZmsHTlhTbhzK2hBLCuE
 Px6RFaRrfkbE7FMbm4YukwwR/9kwzwnnDPN9XmCx7i0=
 -----END SIGNATURE-----
-@downloaded-at 2000-01-01 00:05:13
+@downloaded-at 2000-01-01 00:09:13
 @source "100.0.0.1"
 router 4uthority 100.0.0.1 9111 0 9112
 identity-ed25519
@@ -1763,7 +1763,7 @@ proto Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HS
 published 2000-01-01 00:03:34
 fingerprint A52C A5B5 6C64 D864 F6AE 43E5 6F29 ACBD 5706 DDA1
 uptime 212
-bandwidth 1024000 1024000 66981
+bandwidth 1024000 1024000 67088
 extra-info-digest 9F821C6E14B0CFC891C566D3A2703DF83B53ED62 jXRKkbCsbexmpVf1ZpRV33KQAbPtV7gj4CwpgIzepGU
 caches-extra-info
 onion-key
@@ -1795,10 +1795,10 @@ contact https://github.com/shadow/shadow-plugin-tor/issues
 ntor-onion-key U69lFtjzo9YlaNfjA+LxsV+9NdKLrprR8wqXFBhhJh4
 reject *:*
 tunnelled-dir-server
-router-sig-ed25519 767s6Ca7g9QDw116h9kYMq/fVIZm8MdTTc1SA5/hkrS9ZgHZ4nh4Av7/x73U33IvA1o6bwbGU84nwunnqBbbAQ
+router-sig-ed25519 JdFRuwSsgQKzxD4oCB+baklAqSsKgFJVN+X7jS7kkgZn2rn8mo8tIwkB0qH+2tLLwxHsi93To2AcPSc1+G9HDg
 router-signature
 -----BEGIN SIGNATURE-----
-PRP+8S9adNhlTbQtsokGflQGXHTknsV3RBwra4lYoNfBLSROwc9r3mKxTqb8t8mx
-8HS+b6Y1DXUTOupdTq+tyL8NixBJoJ30f4czDedlTGdtTqg9px+JTBhpsz9ZeJR/
-lSV0NT/uLDbMbwWc5HT4LU2YyCIUwtYOoh3CUH5pYlg=
+cb/U6HaZl/F0C9l33Jyd/DdHSF2zk75j9Uy6E7KotvXnxWLCyOyCFVuwjODSq1S4
+iHig0ckM+VYnyHK6WTxFbLQDZCXcf8v2ejF5Ww+bduci3V5UjDdaf4fhwGdXuCk6
+lOr1lAvF8e1uDZgyn9tw9yDES6lv0L7vGIlgCoqL01w=
 -----END SIGNATURE-----

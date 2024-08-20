@@ -3014,7 +3014,7 @@ config_ensure_bandwidth_cap(uint64_t *value, const char *desc, char **msg)
 
 /** Lowest allowable value for MaxCircuitDirtiness; if this is too low, Tor
  * will generate too many circuits and potentially overload the network. */
-#define MIN_MAX_CIRCUIT_DIRTINESS 10
+#define MIN_MAX_CIRCUIT_DIRTINESS 1
 
 /** Highest allowable value for MaxCircuitDirtiness: prevents time_t
  * overflows. */

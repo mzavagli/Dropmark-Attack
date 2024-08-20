@@ -1,4 +1,4 @@
-# Tor state file last generated on 2000-01-01 00:12:22 local time
+# Tor state file last generated on 2000-01-01 00:12:13 local time
 # Other times below are in UTC
 # You *do not* need to edit this file.
 
@@ -21,13 +21,13 @@ BWHistoryIPv6WriteValues 0
 BWHistoryReadEnds 2000-01-02 00:01:00
 BWHistoryReadInterval 86400
 BWHistoryReadMaxima 58368
-BWHistoryReadValues 1924096
+BWHistoryReadValues 1836032
 BWHistoryWriteEnds 2000-01-02 00:01:00
 BWHistoryWriteInterval 86400
 BWHistoryWriteMaxima 55296
-BWHistoryWriteValues 1876992
+BWHistoryWriteValues 1784832
 Dormant 0
-Guard in=default rsa_id=9531AB8BD204707B90CA3A87BF60DD567A8070DD nickname=relay11 sampled_on=1999-12-29T16:20:44 sampled_idx=0 sampled_by=0.4.9.0-alpha-dev unlisted_since=1999-12-29T11:13:30 listed=0 confirmed_on=1999-12-27T00:40:59 confirmed_idx=0 pb_circ_attempts=5.000000 pb_circ_successes=5.000000 pb_successful_circuits_closed=5.000000
+Guard in=default rsa_id=9531AB8BD204707B90CA3A87BF60DD567A8070DD nickname=relay11 sampled_on=1999-12-29T16:20:44 sampled_idx=0 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-27T00:40:59 confirmed_idx=0 pb_circ_attempts=5.000000 pb_circ_successes=5.000000 pb_successful_circuits_closed=5.000000
 Guard in=default rsa_id=3DF91E1307ED6C27CBB2B60A1D73116BE7A6B0E7 nickname=relay6 sampled_on=1999-12-31T18:58:00 sampled_idx=1 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-31T20:23:38 confirmed_idx=1
 Guard in=default rsa_id=7073525D6A7B97E4708CE8B712BAF21049A72168 nickname=relay4 sampled_on=1999-12-26T22:05:34 sampled_idx=2 sampled_by=0.4.9.0-alpha-dev listed=1
 Guard in=default rsa_id=FF197204099FA0E507FA46D41FED97D3337B4BAA nickname=relay2 sampled_on=1999-12-31T12:55:50 sampled_idx=3 sampled_by=0.4.9.0-alpha-dev listed=1
@@ -39,6 +39,6 @@ Guard in=default rsa_id=A7FCF201E6E0C847BF518CDF0F90B4EC983764C5 nickname=relay1
 Guard in=default rsa_id=BBE79B7D6EBDFC33E9EDD2C0AB4F3C381A2275BF nickname=relay8 sampled_on=1999-12-23T10:13:26 sampled_idx=9 sampled_by=0.4.9.0-alpha-dev listed=1
 Guard in=default rsa_id=3BAEAC8E24C87B4E536484837B67966487A93214 nickname=relay3 sampled_on=1999-12-21T17:18:43 sampled_idx=10 sampled_by=0.4.9.0-alpha-dev listed=1
 LastRotatedOnionKey 2000-01-01 00:01:00
-LastWritten 2000-01-01 00:12:22
+LastWritten 2000-01-01 00:12:13
 MinutesSinceUserActivity 1
 TorVersion Tor 0.4.9.0-alpha-dev (git-a5d53ce4164bd8a2)

@@ -1,4 +1,4 @@
-# Tor state file last generated on 2000-01-01 00:11:06 local time
+# Tor state file last generated on 2000-01-01 00:10:57 local time
 # Other times below are in UTC
 # You *do not* need to edit this file.
 
@@ -20,24 +20,25 @@ BWHistoryIPv6WriteMaxima 0
 BWHistoryIPv6WriteValues 0
 BWHistoryReadEnds 2000-01-02 00:01:00
 BWHistoryReadInterval 86400
-BWHistoryReadMaxima 65536
-BWHistoryReadValues 1741824
+BWHistoryReadMaxima 66560
+BWHistoryReadValues 1584128
 BWHistoryWriteEnds 2000-01-02 00:01:00
 BWHistoryWriteInterval 86400
-BWHistoryWriteMaxima 65536
-BWHistoryWriteValues 1674240
+BWHistoryWriteMaxima 66560
+BWHistoryWriteValues 1520640
 Dormant 0
-Guard in=default rsa_id=3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF nickname=relay1 sampled_on=1999-12-25T04:26:15 sampled_idx=0 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-29T01:18:35 confirmed_idx=0 pb_circ_attempts=4.000000 pb_circ_successes=4.000000 pb_successful_circuits_closed=4.000000
-Guard in=default rsa_id=3DF91E1307ED6C27CBB2B60A1D73116BE7A6B0E7 nickname=relay6 sampled_on=1999-12-29T21:25:06 sampled_idx=1 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-27T19:37:30 confirmed_idx=1
-Guard in=default rsa_id=FF197204099FA0E507FA46D41FED97D3337B4BAA nickname=relay2 sampled_on=1999-12-23T14:15:05 sampled_idx=2 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=7073525D6A7B97E4708CE8B712BAF21049A72168 nickname=relay4 sampled_on=1999-12-23T13:48:02 sampled_idx=3 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=74618117381665DCCA45D635D76018540297702F nickname=relay7 sampled_on=1999-12-22T10:14:35 sampled_idx=4 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=CEB50B88372679F151BF7268651F2D4D2F71D512 nickname=relay5 sampled_on=1999-12-28T06:02:33 sampled_idx=5 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=9531AB8BD204707B90CA3A87BF60DD567A8070DD nickname=relay11 sampled_on=1999-12-27T01:08:53 sampled_idx=6 sampled_by=0.4.9.0-alpha-dev unlisted_since=1999-12-28T08:26:45 listed=0
-Guard in=default rsa_id=4CF7A58BE0620FF1577C982514ACC301AF4F8EDC nickname=relay9 sampled_on=1999-12-26T12:58:14 sampled_idx=7 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=3BAEAC8E24C87B4E536484837B67966487A93214 nickname=relay3 sampled_on=1999-12-29T12:28:37 sampled_idx=8 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=AABEE3F98B825EB46F381410F01DC40B91B6E212 nickname=relay10 sampled_on=1999-12-22T16:58:54 sampled_idx=9 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=A7FCF201E6E0C847BF518CDF0F90B4EC983764C5 nickname=relay12 sampled_on=1999-12-24T19:13:53 sampled_idx=10 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=3BAEAC8E24C87B4E536484837B67966487A93214 nickname=relay3 sampled_on=1999-12-26T21:47:09 sampled_idx=0 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-23T10:21:14 confirmed_idx=0 pb_circ_attempts=4.000000 pb_circ_successes=4.000000 pb_successful_circuits_closed=4.000000
+Guard in=default rsa_id=74618117381665DCCA45D635D76018540297702F nickname=relay7 sampled_on=1999-12-23T19:21:49 sampled_idx=1 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-23T18:08:46 confirmed_idx=1
+Guard in=default rsa_id=9531AB8BD204707B90CA3A87BF60DD567A8070DD nickname=relay11 sampled_on=1999-12-23T07:52:28 sampled_idx=2 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=A7FCF201E6E0C847BF518CDF0F90B4EC983764C5 nickname=relay12 sampled_on=1999-12-21T10:33:13 sampled_idx=3 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=CEB50B88372679F151BF7268651F2D4D2F71D512 nickname=relay5 sampled_on=1999-12-27T05:39:52 sampled_idx=4 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=FF197204099FA0E507FA46D41FED97D3337B4BAA nickname=relay2 sampled_on=1999-12-26T02:24:35 sampled_idx=5 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=7073525D6A7B97E4708CE8B712BAF21049A72168 nickname=relay4 sampled_on=1999-12-29T15:22:35 sampled_idx=6 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF nickname=relay1 sampled_on=1999-12-20T22:01:55 sampled_idx=7 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=AABEE3F98B825EB46F381410F01DC40B91B6E212 nickname=relay10 sampled_on=1999-12-30T06:46:56 sampled_idx=8 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=3DF91E1307ED6C27CBB2B60A1D73116BE7A6B0E7 nickname=relay6 sampled_on=1999-12-22T10:58:24 sampled_idx=9 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=4CF7A58BE0620FF1577C982514ACC301AF4F8EDC nickname=relay9 sampled_on=1999-12-21T21:17:45 sampled_idx=10 sampled_by=0.4.9.0-alpha-dev listed=1
 LastRotatedOnionKey 2000-01-01 00:01:00
-LastWritten 2000-01-01 00:11:06
+LastWritten 2000-01-01 00:10:57
+MinutesSinceUserActivity 4
 TorVersion Tor 0.4.9.0-alpha-dev (git-a5d53ce4164bd8a2)

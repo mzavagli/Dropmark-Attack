@@ -20,20 +20,20 @@ BWHistoryIPv6WriteMaxima 0
 BWHistoryIPv6WriteValues 0
 BWHistoryReadEnds 2000-01-02 00:01:00
 BWHistoryReadInterval 86400
-BWHistoryReadMaxima 52224
-BWHistoryReadValues 1665024
+BWHistoryReadMaxima 40960
+BWHistoryReadValues 1085440
 BWHistoryWriteEnds 2000-01-02 00:01:00
 BWHistoryWriteInterval 86400
-BWHistoryWriteMaxima 52224
-BWHistoryWriteValues 1626112
+BWHistoryWriteMaxima 40960
+BWHistoryWriteValues 1060864
 Dormant 0
-Guard in=default rsa_id=CEB50B88372679F151BF7268651F2D4D2F71D512 nickname=relay5 sampled_on=1999-12-25T09:36:05 sampled_idx=0 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-31T22:15:55 confirmed_idx=1 pb_circ_attempts=4.000000 pb_circ_successes=4.000000 pb_successful_circuits_closed=4.000000
-Guard in=default rsa_id=A7FCF201E6E0C847BF518CDF0F90B4EC983764C5 nickname=relay12 sampled_on=1999-12-26T18:40:12 sampled_idx=1 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-22T06:05:39 confirmed_idx=0
-Guard in=default rsa_id=FF197204099FA0E507FA46D41FED97D3337B4BAA nickname=relay2 sampled_on=1999-12-21T19:29:22 sampled_idx=2 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF nickname=relay1 sampled_on=1999-12-31T22:58:15 sampled_idx=3 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=74618117381665DCCA45D635D76018540297702F nickname=relay7 sampled_on=1999-12-27T01:14:35 sampled_idx=4 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=7073525D6A7B97E4708CE8B712BAF21049A72168 nickname=relay4 sampled_on=1999-12-28T10:24:40 sampled_idx=5 sampled_by=0.4.9.0-alpha-dev listed=1
-Guard in=default rsa_id=AABEE3F98B825EB46F381410F01DC40B91B6E212 nickname=relay10 sampled_on=1999-12-25T06:46:35 sampled_idx=6 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=74618117381665DCCA45D635D76018540297702F nickname=relay7 sampled_on=1999-12-27T07:39:56 sampled_idx=0 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-21T05:38:40 confirmed_idx=1 pb_circ_attempts=4.000000 pb_circ_successes=4.000000 pb_successful_circuits_closed=4.000000
+Guard in=default rsa_id=FF197204099FA0E507FA46D41FED97D3337B4BAA nickname=relay2 sampled_on=1999-12-23T04:58:47 sampled_idx=1 sampled_by=0.4.9.0-alpha-dev listed=1 confirmed_on=1999-12-22T10:13:23 confirmed_idx=0
+Guard in=default rsa_id=AABEE3F98B825EB46F381410F01DC40B91B6E212 nickname=relay10 sampled_on=1999-12-20T04:30:32 sampled_idx=2 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=A7FCF201E6E0C847BF518CDF0F90B4EC983764C5 nickname=relay12 sampled_on=1999-12-31T22:16:26 sampled_idx=3 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=CEB50B88372679F151BF7268651F2D4D2F71D512 nickname=relay5 sampled_on=1999-12-25T22:38:49 sampled_idx=4 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=7073525D6A7B97E4708CE8B712BAF21049A72168 nickname=relay4 sampled_on=1999-12-27T20:05:38 sampled_idx=5 sampled_by=0.4.9.0-alpha-dev listed=1
+Guard in=default rsa_id=3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF nickname=relay1 sampled_on=1999-12-22T01:37:01 sampled_idx=6 sampled_by=0.4.9.0-alpha-dev listed=1
 LastRotatedOnionKey 2000-01-01 00:01:00
 LastWritten 2000-01-01 00:05:42
 MinutesSinceUserActivity 4

@@ -15,19 +15,19 @@ required-relay-protocols Cons=2 Desc=2 DirCache=2 HSDir=2 HSIntro=4 HSRend=2 Lin
 params AuthDirMaxServersPerAddr=0 cc_alg=2
 dir-source 4uthority BA3FDA7CE3B41FBF9BB3615BE6ACD28D883E694B 100.0.0.1 100.0.0.1 9112 9111
 contact https://github.com/shadow/shadow-plugin-tor/issues
-vote-digest 194023E701811BA92887742F90E0230EA7561DEE
+vote-digest 940F03F5ACB0A97A4B8AB8BCDF96743A37170770
 r exit1 CpsbIH/ROm8Rf5XK+jWO7iI08Zo 2038-01-01 00:00:00 11.0.0.2 9111 0
 m rSWTKYSkHjr+rnMW3em7MPP6dRiQKicCvdVwLpKtqLc
 s Exit Fast HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=217 Unmeasured=1
+w Bandwidth=52 Unmeasured=1
 r exit4 D7MZ2MRrTZ0InW8gnimVtwiWqyI 2038-01-01 00:00:00 11.0.0.5 9111 0
 m 2Qp0oIAFCq/5WdgnQhdsdBo3MEn4FbqaxtaS7V38IeA
 s Exit Fast HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=327 Unmeasured=1
+w Bandwidth=54 Unmeasured=1
 r relay3 O66sjiTIe05TZISDe2eWZIepMhQ 2038-01-01 00:00:00 11.0.0.12 9111 0
 m N/vkZd+UoVGVjYDrczaWec6bXFou9UXI3KLSaYTKQnU
 s Fast Guard HSDir Running Stable V2Dir Valid
@@ -39,7 +39,7 @@ m p/mQSJvIxHg/0R1qv5rkY/TwqYROjavfTg1pfP/bkPU
 s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=80 Unmeasured=1
+w Bandwidth=93 Unmeasured=1
 r relay1 P7C9eCfHYP5/ndgQ/LEDItY6tM8 2038-01-01 00:00:00 11.0.0.7 9111 0
 m muDYd0zMz+eDjIj7lTnuP9XOOf9nQP1Yvqqsm+cZgaE
 s Fast Guard HSDir Running Stable V2Dir Valid
@@ -51,13 +51,13 @@ m 2Bf2+jtotHW6WylbJQRJB6LGflWLIoXdE8YblivcrmE
 s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=79 Unmeasured=1
+w Bandwidth=54 Unmeasured=1
 r exit2 Trs4XICiyl1nHhbxxyL7+18XaJE 2038-01-01 00:00:00 11.0.0.3 9111 0
 m EHXXiD128XgvgGTZMFoeC8MH9YU6zol+w8EsWfH4Zvc
 s Exit Fast HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=218 Unmeasured=1
+w Bandwidth=67 Unmeasured=1
 r relay4 cHNSXWp7l+RwjOi3ErryEEmnIWg 2038-01-01 00:00:00 11.0.0.13 9111 0
 m PlrepGn5wHXo2zXhWct2rssDbyp1FGhHQdbIGWbEwNU
 s Fast Guard HSDir Running Stable V2Dir Valid
@@ -72,28 +72,28 @@ pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRen
 w Bandwidth=81 Unmeasured=1
 r relay11 lTGri9IEcHuQyjqHv2DdVnqAcN0 2038-01-01 00:00:00 11.0.0.9 9111 0
 m T7kz9c5qBIwVGV4JC40krOnAfPSUprHdfri8WQFTt1M
-s Guard Running Stable V2Dir Valid
+s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=39 Unmeasured=1
+w Bandwidth=82 Unmeasured=1
 r 4uthority pSyltWxk2GT2rkPlbymsvVcG3aE 2038-01-01 00:00:00 100.0.0.1 9111 9112
 m 5Di/Y7R+5j1Fhdy0GSWZGar8E3xHyJamzdzeXuonto0
 s Authority Fast HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=145 Unmeasured=1
+w Bandwidth=67 Unmeasured=1
 r relay12 p/zyAebgyEe/UYzfD5C07Jg3ZMU 2038-01-01 00:00:00 11.0.0.10 9111 0
 m Xu3STY6/xz3dcLhoapbabZ2uDEhqATXTPNXTxcgIRWo
 s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=119 Unmeasured=1
+w Bandwidth=55 Unmeasured=1
 r relay10 qr7j+YuCXrRvOBQQ8B3EC5G24hI 2038-01-01 00:00:00 11.0.0.8 9111 0
 m 5lAtopy6a/TJJ+GID8jKz1JtUBZ0zJAzWwOTXfAQYpw
 s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=144 Unmeasured=1
+w Bandwidth=55 Unmeasured=1
 r exit3 q0FWb2yKH59HdniPHw6pUuDXoIA 2038-01-01 00:00:00 11.0.0.4 9111 0
 m Epo2YCx1MNnU9o/GYMH7yuD/rZDZdj+tUa+1FEJm9Xk
 s Exit Running Stable V2Dir Valid
@@ -111,18 +111,18 @@ m kJjvhlfDjgPxOuT8ulNATcIPK2NzxHIW32un7gmKVgs
 s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=178 Unmeasured=1
+w Bandwidth=81 Unmeasured=1
 r relay2 /xlyBAmfoOUH+kbUH+2X0zN7S6o 2038-01-01 00:00:00 11.0.0.11 9111 0
 m J31Yk5SKMOKIKlarKGIyBZrOWggHlHa3bl5uyOLrhSo
 s Fast Guard HSDir Running Stable V2Dir Valid
 v Tor 0.4.9.0-alpha-dev
 pr Conflux=1 Cons=1-2 Desc=1-2 DirCache=2 FlowCtrl=1-2 HSDir=2 HSIntro=4-5 HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-4
-w Bandwidth=257 Unmeasured=1
+w Bandwidth=93 Unmeasured=1
 directory-footer
-bandwidth-weights Wbd=3333 Wbe=968 Wbg=4088 Wbm=10000 Wdb=10000 Web=10000 Wed=3333 Wee=9032 Weg=3333 Wem=9032 Wgb=10000 Wgd=3333 Wgg=5912 Wgm=5912 Wmb=10000 Wmd=3333 Wme=968 Wmg=4088 Wmm=10000
+bandwidth-weights Wbd=0 Wbe=0 Wbg=4597 Wbm=10000 Wdb=10000 Web=10000 Wed=10000 Wee=10000 Weg=10000 Wem=10000 Wgb=10000 Wgd=0 Wgg=5403 Wgm=5403 Wmb=10000 Wmd=0 Wme=0 Wmg=4597 Wmm=10000
 directory-signature sha256 BA3FDA7CE3B41FBF9BB3615BE6ACD28D883E694B B6B52D36DA47A014B5CF65A55EDC62C93523DCC3
 -----BEGIN SIGNATURE-----
-DfDyca1qMHmz6QBieRjdvB2AVJ8HobR/3f0MmA6eX0s4Gb5G9D5t5zlHjbmdVMe1
-OycGShoy/fOkFPI3WzRW+oLA1cFq9ilCwtVIvcAFAT/b8e8ETCFb82+rE2znytRW
-Ldi4ifsrPRuShKaOhgNIWfRi29FLD7f7Qv45jlFnuJU=
+FKQfFCSQ8+iwIwzTP7M1a74jPM+qeWlLJzvnjhZ31k3E9n44eWtUhbk0MmLrRNQz
+KoqNSijiAUFqH3xZQ2X62zEteRAJnQU7eC/o0wJQFJ90kGxtJ6kJMBzqYXWJENMI
+yPe46dU1o6zD/VX/TcM/FCgJBxP+f8cY5zZAaIW8NBc=
 -----END SIGNATURE-----
